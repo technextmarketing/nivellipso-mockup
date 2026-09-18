@@ -1,0 +1,101 @@
+/* ============================================================
+   nivellipso® — Formular- & Druck-Stylesheet (A4, print→PDF)
+   Gemeinsam für alle Dokumente. Marke: Rot #C00000 / Schwarz / Weiß.
+   ============================================================ */
+:root{
+  --red:#C00000; --red-dark:#8a0000; --black:#111; --grey:#666;
+  --border:#ddd; --bg:#f7f7f7; --line:#999;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  color:var(--black); line-height:1.55; font-size:13px; background:#e9e9e9;
+}
+
+/* ── Screen-only Toolbar (Sprache + Druck) ── */
+.toolbar{
+  position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid var(--border);
+  display:flex; gap:8px; align-items:center; padding:10px 16px; flex-wrap:wrap;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
+}
+.toolbar .tb-title{font-weight:700;font-size:13px;margin-right:auto;color:var(--black);}
+.lang-pill{
+  border:1px solid var(--border); background:#fff; color:var(--black);
+  font-weight:700; font-size:12px; padding:6px 12px; border-radius:999px; cursor:pointer;
+}
+.lang-pill.active{background:var(--red); color:#fff; border-color:var(--red);}
+.print-btn{
+  background:var(--red); color:#fff; border:none; font-weight:700; font-size:12px;
+  padding:7px 16px; border-radius:6px; cursor:pointer;
+}
+.print-btn:hover{background:var(--red-dark);}
+
+/* ── A4 Seite ── */
+.page{
+  width:210mm; min-height:297mm; margin:18px auto; background:#fff; padding:20mm 18mm;
+  box-shadow:0 4px 24px rgba(0,0,0,.12); position:relative;
+}
+.lang-section{display:none;}
+.lang-section.active{display:block;}
+
+/* ── Kopf ── */
+.doc-head{display:flex;align-items:flex-start;gap:14px;border-bottom:3px solid var(--red);padding-bottom:14px;margin-bottom:22px;}
+.logo-sq{width:42px;height:42px;background:var(--red);border-radius:5px;position:relative;flex-shrink:0;}
+.logo-sq::after{content:"+";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:30px;font-weight:900;line-height:1;}
+.brand-name{font-size:20px;font-weight:800;letter-spacing:-.5px;}
+.brand-name sup{font-size:9px;}
+.brand-sub{font-size:10px;color:var(--grey);letter-spacing:.5px;text-transform:uppercase;}
+.doc-meta{margin-left:auto;text-align:right;font-size:10px;color:var(--grey);line-height:1.5;}
+.doc-title{font-size:22px;font-weight:800;letter-spacing:-.6px;margin:0 0 4px;}
+.doc-tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);}
+
+/* ── Inhalt ── */
+h2.sec{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--red);
+  border-bottom:1px solid var(--border);padding-bottom:5px;margin:22px 0 10px;}
+h3.sub{font-size:13px;font-weight:700;margin:14px 0 4px;}
+p{margin:0 0 9px;}
+ul,ol{margin:0 0 10px;padding-left:20px;}
+li{margin-bottom:4px;}
+.small{font-size:11px;color:var(--grey);}
+.muted{color:var(--grey);}
+.placeholder{background:#fff3cd;border:1px dashed #d9a400;color:#8a6d00;padding:1px 6px;border-radius:3px;font-size:11px;font-weight:600;}
+.callout{background:var(--bg);border-left:4px solid var(--red);padding:12px 16px;margin:12px 0;font-size:12px;}
+
+/* Felder zum Ausfüllen */
+.field{display:flex;align-items:flex-end;gap:8px;margin:8px 0;}
+.field label{font-size:11px;color:var(--grey);min-width:140px;}
+.fill{flex:1;border-bottom:1px solid var(--line);min-height:18px;}
+.fill.short{flex:0 0 180px;}
+.row2{display:flex;gap:24px;}
+.row2>.field{flex:1;}
+.checkline{display:flex;align-items:flex-start;gap:8px;margin:7px 0;font-size:12px;}
+.box{width:13px;height:13px;border:1.5px solid var(--black);flex-shrink:0;margin-top:1px;}
+
+/* Tabellen (Preisliste, CE) */
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:12px;}
+th,td{border:1px solid var(--border);padding:7px 10px;text-align:left;}
+th{background:var(--black);color:#fff;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.5px;}
+tr:nth-child(even) td{background:#fafafa;}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.def-table th{width:38%;background:#f0f0f0;color:var(--black);}
+
+/* Unterschriften */
+.sig-grid{display:flex;gap:40px;margin-top:30px;}
+.sig{flex:1;}
+.sig-line{border-top:1px solid var(--black);margin-top:42px;padding-top:5px;font-size:11px;color:var(--grey);}
+
+/* Fuß */
+.doc-foot{margin-top:26px;border-top:1px solid var(--border);padding-top:10px;font-size:9.5px;color:var(--grey);line-height:1.5;display:flex;justify-content:space-between;gap:16px;}
+
+/* ── Druck ── */
+@media print{
+  @page{size:A4;margin:14mm;}
+  body{background:#fff;font-size:11.5px;}
+  .toolbar{display:none !important;}
+  .page{width:auto;min-height:0;margin:0;padding:0;box-shadow:none;}
+  .lang-section{display:none !important;}
+  .lang-section.active{display:block !important;}
+  .placeholder{background:none;border:none;color:#000;}
+  .page-break{page-break-before:always;}
+}

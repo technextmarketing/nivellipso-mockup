@@ -1,0 +1,449 @@
+﻿<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta name="robots" content="noindex, nofollow"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title data-i18n="page_title_academy">nivellipso® Academy, Wissen für bessere Ergebnisse</title>
+<meta content="nivellipso® Academy, Videos, Podcasts und klinische Tipps für KFO-Ärzte. Wissen für bessere Behandlungsergebnisse." name="description"/>
+<meta content="nivellipso® Academy, Wissen für bessere Ergebnisse" property="og:title"/>
+<meta content="nivellipso® Academy, Videos, Podcasts und klinische Tipps für KFO-Ärzte. Wissen für bessere Behandlungsergebnisse." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://www.nivellipso.com/academy/" property="og:url"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="../assets/css/nivell-design.css?v=20260822" rel="stylesheet"/>
+<style>
+.academy-hero-bg{background:linear-gradient(145deg,#0a0000 0%,var(--black) 50%,#1a0000 100%);position:relative;}
+.academy-hero-bg::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(192,0,0,.16) 0%,transparent 70%);pointer-events:none;}
+.academy-hero-bg::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--red);}
+.cat-tabs{display:flex;gap:2px;margin-bottom:36px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
+.cat-tabs::-webkit-scrollbar{display:none;}
+.cat-tab{padding:11px 22px;font-size:13px;font-weight:700;background:white;border:1px solid var(--border);cursor:pointer;color:var(--grey);font-family:Arial,sans-serif;white-space:nowrap;box-shadow:0 2px 0 rgba(0,0,0,.04);flex-shrink:0;transition:all .15s;}
+.cat-tab.active{background:var(--red);color:white;border-color:var(--red);box-shadow:0 3px 0 var(--red-dark);}
+.cat-tab:hover:not(.active){border-color:var(--red);color:var(--red);transform:translateY(-1px);}
+.featured-video{position:relative;background:var(--black);aspect-ratio:16/9;overflow:hidden;cursor:pointer;border:1px solid var(--border);margin-bottom:24px;}
+.featured-video img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.featured-video:hover img{transform:scale(1.03);}
+.featured-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.18) 50%,transparent 100%);display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.featured-video:hover .featured-overlay{background:linear-gradient(0deg,rgba(0,0,0,.78) 0%,rgba(192,0,0,.18) 50%,transparent 100%);}
+.featured-play-btn{width:68px;height:68px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(0,0,0,.38);transition:transform .2s;}
+.featured-video:hover .featured-play-btn{transform:scale(1.1);}
+.featured-play-btn svg{width:26px;height:26px;color:var(--red);margin-left:4px;}
+.featured-meta{position:absolute;bottom:20px;left:20px;right:20px;}
+.featured-tag{display:inline-block;background:var(--red);color:white;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;margin-bottom:8px;}
+.featured-title{font-size:clamp(15px,2.5vw,24px);font-weight:700;color:white;line-height:1.2;letter-spacing:-.3px;}
+.featured-info{font-size:11px;color:rgba(255,255,255,.55);margin-top:5px;display:flex;gap:14px;flex-wrap:wrap;}
+.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.video-card{background:white;border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;display:block;text-decoration:none;color:inherit;}
+.video-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.video-thumb{position:relative;background:var(--bg);aspect-ratio:16/9;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.video-thumb img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform .3s;}
+.video-card:hover .video-thumb img{transform:scale(1.04);}
+.vplay-wrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.22);transition:background .2s;}
+.video-card:hover .vplay-wrap{background:rgba(192,0,0,.52);}
+.vplay-btn{width:46px;height:46px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 14px rgba(0,0,0,.26);transition:transform .2s;}
+.video-card:hover .vplay-btn{transform:scale(1.1);}
+.vplay-btn svg{width:17px;height:17px;color:var(--red);margin-left:3px;}
+.vduration{position:absolute;bottom:6px;right:6px;background:rgba(0,0,0,.7);color:white;font-size:9px;font-weight:700;padding:2px 6px;}
+.vcat{position:absolute;top:6px;left:6px;background:var(--red);color:white;font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;}
+.vbody{padding:14px;}
+.vtitle{font-size:14px;font-weight:700;color:var(--black);margin-bottom:5px;line-height:1.3;}
+.vmeta{font-size:10px;color:var(--grey);display:flex;gap:8px;flex-wrap:wrap;}
+.podcast-list{display:flex;flex-direction:column;gap:2px;}
+.podcast-feat{background:var(--black);padding:24px 28px;display:grid;grid-template-columns:90px 1fr;gap:20px;align-items:center;margin-bottom:3px;}
+.podcast-feat img{width:90px;height:90px;object-fit:cover;border-radius:4px;}
+.pf-label{font-size:8px;font-weight:700;letter-spacing:2px;color:var(--red);text-transform:uppercase;margin-bottom:5px;}
+.pf-title{font-size:18px;font-weight:700;color:white;letter-spacing:-.3px;margin-bottom:6px;}
+.pf-desc{font-size:12px;color:rgba(255,255,255,.48);line-height:1.55;}
+.pf-btns{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;}
+.pf-btn{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);color:white;padding:7px 13px;font-size:11px;font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,.12);transition:all .2s;}
+.pf-btn:hover{background:rgba(255,255,255,.16);}
+.pf-btn svg{width:14px;height:14px;}
+.podcast-ep{background:white;border:1px solid var(--border);padding:16px 20px;display:flex;gap:12px;align-items:center;transition:border-color .2s,transform .15s;cursor:pointer;}
+.podcast-ep:hover{border-color:var(--red);transform:translateX(3px);}
+.ep-num{font-size:24px;font-weight:700;color:var(--red);opacity:.12;letter-spacing:-1.5px;line-height:1;min-width:36px;}
+.ep-play{width:38px;height:38px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 0 var(--red-dark);transition:transform .15s;}
+.podcast-ep:hover .ep-play{transform:scale(1.08);}
+.ep-play svg{width:14px;height:14px;color:white;margin-left:2px;}
+.ep-info{flex:1;}
+.ep-title{font-size:14px;font-weight:700;color:var(--black);margin-bottom:3px;}
+.ep-desc{font-size:12px;color:var(--grey);line-height:1.45;}
+.ep-meta{font-size:10px;color:var(--grey);margin-top:4px;display:flex;gap:8px;}
+.ep-dur{font-size:11px;font-weight:700;color:var(--red);flex-shrink:0;}
+.tips-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.tip-card{background:white;border:1px solid var(--border);padding:20px;border-top:3px solid var(--red);transition:transform .2s,box-shadow .2s;}
+.tip-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);}
+.tip-ico-wrap{width:40px;height:40px;background:var(--red-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:14px;transition:transform .2s,background .2s;}
+.tip-ico-wrap svg{width:18px;height:18px;color:var(--red);}
+.tip-card:hover .tip-ico-wrap{background:var(--red);transform:rotate(8deg) scale(1.12);}
+.tip-card:hover .tip-ico-wrap svg{color:white;}
+.mailing-hero{background:linear-gradient(135deg,var(--red-light),white);border:1px solid #fdd;border-left:5px solid var(--red);padding:32px 36px;margin-bottom:28px;}
+.mailing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.mail-card{background:white;border:1px solid var(--border);padding:20px;border-top:3px solid var(--red);transition:transform .2s,box-shadow .2s;}
+.mail-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);}
+.mail-month{font-size:26px;font-weight:700;color:var(--red);opacity:.14;letter-spacing:-1px;line-height:1;margin-bottom:8px;}
+.mail-topic{font-size:14px;font-weight:700;color:var(--black);margin-bottom:5px;}
+.mail-desc{font-size:12px;color:var(--grey);line-height:1.6;}
+.newsletter-sec{background:var(--red);padding:48px 40px;text-align:center;}
+.newsletter-sec h2{font-size:clamp(20px,3vw,34px);font-weight:700;color:white;letter-spacing:-1px;margin-bottom:10px;}
+.newsletter-sec p{font-size:14px;color:rgba(255,255,255,.7);margin-bottom:28px;max-width:480px;margin-left:auto;margin-right:auto;}
+.nl-form{display:flex;gap:3px;max-width:500px;margin:0 auto;flex-wrap:wrap;justify-content:center;}
+.nl-input{flex:1;min-width:240px;padding:13px 16px;border:none;font-family:Arial,sans-serif;font-size:14px;outline:none;}
+.nl-btn{background:var(--black);color:white;padding:13px 24px;font-size:13px;font-weight:700;border:none;cursor:pointer;font-family:Arial,sans-serif;letter-spacing:.5px;text-transform:uppercase;box-shadow:0 3px 0 rgba(0,0,0,.4);transition:transform .12s,box-shadow .12s;}
+.nl-btn:hover{transform:translateY(2px);box-shadow:0 1px 0 rgba(0,0,0,.4);}
+.nl-note{font-size:10px;color:rgba(255,255,255,.45);margin-top:10px;}
+.coming-soon-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(192,0,0,.1);border:1px solid rgba(192,0,0,.2);color:var(--red);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;}
+.coming-soon-badge::before{content:'';width:5px;height:5px;background:var(--red);border-radius:50%;animation:pulse-ring 2s ease-out infinite;}
+.stat-strip{background:var(--black);padding:28px 40px;}
+.stat-strip-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);}
+.ss{padding:0 28px;border-right:1px solid rgba(255,255,255,.07);text-align:center;}
+.ss:last-child{border-right:none;}
+.ss-n{font-size:32px;font-weight:700;color:white;letter-spacing:-2px;line-height:1;}
+.ss-n em{font-style:normal;color:var(--red);}
+.ss-l{font-size:10px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:1.5px;margin-top:3px;}
+@media(max-width:768px){
+ .video-grid{grid-template-columns:1fr;}
+ .tips-grid{grid-template-columns:1fr 1fr;}
+ .mailing-grid{grid-template-columns:1fr 1fr;}
+ .podcast-feat{grid-template-columns:1fr;}
+ .podcast-feat img{width:70px;height:70px;}
+ .nl-form{flex-direction:column;}
+ .nl-input{min-width:100%;}
+ .nl-btn{width:100%;}
+ .stat-strip-inner{grid-template-columns:1fr 1fr;gap:12px;}
+ .ss{border-right:none;padding:10px 0;}
+ .stat-strip{padding:20px;}
+ .newsletter-sec{padding:36px 20px;}
+ .mailing-hero{padding:20px;}
+}
+@media(max-width:480px){
+ .tips-grid{grid-template-columns:1fr;}
+ .mailing-grid{grid-template-columns:1fr;}
+ .ep-num{display:none;}
+}
+
+/* ══ MOBILE (640px) ═══════════════════════════════════════════════════ */
+@media(max-width:640px){
+  .n-rec-banner{flex-direction:column;gap:8px;padding:18px 20px;}
+  .phase-content{padding:16px 18px;}
+  .phase-name{font-size:16px;}
+}
+
+/* ── CHAT BUTTON MOBILE — consistent circle across all pages ── */
+@media(max-width:768px){
+  .chat-toggle{position:fixed;right:16px !important;bottom:16px !important;padding:0 !important;width:54px !important;height:54px !important;border-radius:50% !important;justify-content:center !important;gap:0 !important;font-size:0 !important;box-shadow:0 4px 16px rgba(192,0,0,.45) !important;}
+  .chat-toggle .c-label,.chat-toggle .c-close{display:none !important;}
+  .chat-toggle .c-icon{width:24px !important;height:24px !important;display:block !important;}
+}
+</style>
+</head>
+<body>
+<nav class="n-nav" id="mainNav">
+<div class="n-nav-inner">
+<a class="n-logo" href="../">
+<img src="../assets/images/logo_black.png" alt="nivellipso®" style="height:46px;width:auto;display:block;">
+</a>
+<ul class="n-links">
+<li class="n-dropdown">
+<a class="n-dropdown-trigger" href="#"><span data-i18n="n_prod">Produkte</span> <svg class="n-drop-chevron" fill="none" viewBox="0 0 10 6" width="10" height="6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5"/></svg></a>
+<div class="n-dropdown-menu">
+<a href="../aligner/" data-i18n="n_align">Schienen</a>
+<a href="../brackets/" data-i18n="n_brack">Brackets</a>
+<a href="../whitening/" data-i18n="n_white">Whitening</a>
+</div>
+</li>
+<li><a href="../visibal/" style="color:var(--red);font-weight:700;">VISIBAL</a></li>
+<li><a href="../#about" data-i18n="n_about">Über uns</a></li>
+<li><a href="../#contact-form" data-i18n="n_con">Kontakt</a></li>
+<li><a href="https://shop.nivellipso.com/" data-i18n="n_shop">Webshop</a></li>
+</ul>
+<div style="display:flex;align-items:center;gap:12px;">
+<button class="lang-btn" id="langBtn" aria-label="Sprache wählen">
+<span id="lFlag"></span><span id="lCode">DE</span>
+<svg viewBox="0 0 10 6" fill="none" width="10" height="6"><path d="M1 1l4 4 4-4" stroke="#111" stroke-width="1.5"/></svg>
+<div class="lang-dropdown">
+<div class="lang-opt active" data-lang="de" onclick="setNivellLang('de',window.T);updateLangUI('de',this)"><img src="https://flagcdn.com/20x15/de.png" alt="DE"> Deutsch</div>
+<div class="lang-opt" data-lang="en" onclick="setNivellLang('en',window.T);updateLangUI('en',this)"><img src="https://flagcdn.com/20x15/gb.png" alt="EN"> English</div>
+</div>
+</button>
+<a class="btn-3d" href="https://nivellonlign.com/" style="font-size:13px;padding:12px 22px;" target="_blank" data-i18n="n_portal">Doctor Portal →</a>
+<button class="n-hamburger" id="hamburger" aria-label="Navigation öffnen" aria-expanded="false" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</div>
+</div>
+<div class="n-mobile-menu" id="mobileMenu">
+<ul>
+<li><span class="n-mob-section" data-i18n="n_prod">Produkte</span></li>
+<li class="n-mob-sub"><a href="../aligner/" data-i18n="n_align">Schienen</a></li>
+<li class="n-mob-sub"><a href="../brackets/" data-i18n="n_brack">Brackets</a></li>
+<li class="n-mob-sub"><a href="../whitening/" data-i18n="n_white">Whitening</a></li>
+<li><a href="../visibal/" style="color:var(--red);font-weight:700;">VISIBAL</a></li>
+<li><a href="../#about" data-i18n="n_about">Über uns</a></li>
+<li><a href="../#contact-form" data-i18n="n_con">Kontakt</a></li>
+<li><a href="https://shop.nivellipso.com/" data-i18n="n_shop">Webshop</a></li>
+</ul>
+<a href="https://nivellonlign.com/" target="_blank" class="n-mobile-cta" data-i18n="n_portal">Doctor Portal →</a>
+</div>
+</nav>
+<div class="n-page-hero academy-hero-bg">
+<div class="n-page-hero-inner">
+<div class="n-breadcrumb"><a data-i18n="n_home" href="../">Home</a> <svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.5"></path></svg> <span data-i18n="ac_e4">Academy</span></div>
+<div class="t-label" data-i18n="ac_e1" style="color:var(--red);">nivellipso® Academy</div>
+<h1 class="n-page-h1" data-i18n="ac_1">Wissen für bessere<br/><em>Ergebnisse.</em></h1>
+<p class="n-page-sub" data-i18n="ac_2">Videos, Podcasts, klinische Tipps, monatliches Patient-Mailing und Ressourcen, für Ärzte, Praxisteams und Patienten. Alles an einem Ort.</p>
+</div>
+</div>
+<div class="stat-strip">
+<div class="stat-strip-inner">
+<div class="ss"><div class="ss-n" data-i18n="ac_e5">24<em>+</em></div><div class="ss-l" data-i18n="ac_e6">Videos</div></div>
+<div class="ss"><div class="ss-n" data-i18n="ac_e7">12<em>×</em></div><div class="ss-l" data-i18n="ac_e8">Podcast Episoden</div></div>
+<div class="ss"><div class="ss-n" data-i18n="ac_e9">1<em>×/mo</em></div><div class="ss-l" data-i18n="ac_e10">Patient-Mailing</div></div>
+<div class="ss"><div class="ss-n">6<em></em></div><div class="ss-l" data-i18n="ac_e11">Sprachen</div></div>
+</div>
+</div>
+<section class="n-sec" id="content">
+<div class="n-sec-inner">
+<div class="cat-tabs n-fade">
+<button class="cat-tab active" data-i18n="ac_3" onclick="showCat('videos',this)">📹 Videos</button>
+<button class="cat-tab" data-i18n="ac_4" onclick="showCat('podcasts',this)">🎙️ Podcast</button>
+<button class="cat-tab" data-i18n="ac_5" onclick="showCat('tips',this)">💡 Tipps &amp; Tricks</button>
+<button class="cat-tab" data-i18n="ac_6" onclick="showCat('mailing',this)">📧 Patient-Mailing</button>
+<button class="cat-tab" data-i18n="ac_7" onclick="showCat('resources',this)">📄 Ressourcen</button>
+</div>
+<!-- VIDEOS -->
+<div id="cat-videos">
+<div class="n-fade"><div class="t-label" data-i18n="ac_e14">Featured</div><h2 class="t-h2" data-i18n="ac_8">Klinische Experten-Videos.</h2><div class="t-rule"></div></div>
+<div class="featured-video n-fade" onclick="loadYT(this,'t_gj4lVTbyU')" style="cursor:pointer;">
+<img alt="Nivellipso Aligners, Invisible Aligners" decoding="async" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/t_gj4lVTbyU/hqdefault.jpg'" src="https://i.ytimg.com/vi/t_gj4lVTbyU/maxresdefault.jpg"/>
+<div class="featured-overlay"><div class="featured-play-btn"><svg fill="var(--red)" stroke="none" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div></div>
+<div class="featured-meta">
+<div class="featured-tag">Featured · nivellipso®</div>
+<div class="featured-title">Nivellipso Aligners, Invisible Aligners</div>
+<div class="featured-info"><span>▶ YouTube</span><span>nivellipso®</span></div>
+</div>
+</div>
+<div class="video-grid n-fade">
+<div class="video-card" onclick="loadYT(this,'gRkuq5HoYu0')" style="cursor:pointer;"><div class="video-thumb"><img alt="How to Use the Nivellipso Doctors Portal" loading="lazy" src="https://i.ytimg.com/vi/gRkuq5HoYu0/hqdefault.jpg"/><div class="vplay-wrap"><div class="vplay-btn"><svg fill="var(--red)" stroke="none" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div></div><div class="vcat">Workflow</div></div><div class="vbody"><div class="vtitle">How to Use the Nivellipso Doctors Portal</div><div class="vmeta"><span>▶ YouTube</span><span>nivellipso®</span></div></div></div>
+<div class="video-card" onclick="loadYT(this,'pzxlAGN9UUM')" style="cursor:pointer;"><div class="video-thumb"><img alt="nivellipso, esthetic clinics" loading="lazy" src="https://i.ytimg.com/vi/pzxlAGN9UUM/hqdefault.jpg"/><div class="vplay-wrap"><div class="vplay-btn"><svg fill="var(--red)" stroke="none" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div></div><div class="vcat">Klinik</div></div><div class="vbody"><div class="vtitle">nivellipso, esthetic clinics</div><div class="vmeta"><span>▶ YouTube</span><span>nivellipso®</span></div></div></div>
+<div class="video-card" onclick="loadYT(this,'UPa3oZOGRTI')" style="cursor:pointer;"><div class="video-thumb"><img alt="Orthodontic Aligners with HP 3D, EVOK3D" loading="lazy" src="https://i.ytimg.com/vi/UPa3oZOGRTI/hqdefault.jpg"/><div class="vplay-wrap"><div class="vplay-btn"><svg fill="var(--red)" stroke="none" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div></div><div class="vcat">Produktion</div></div><div class="vbody"><div class="vtitle">Aligner mit HP 3D, EVOK3D · NIVELL MEDICAL</div><div class="vmeta"><span>▶ YouTube</span><span>nivellipso®</span></div></div></div>
+<div class="video-card" onclick="loadYT(this,'nlRWiMglLAE')" style="cursor:pointer;"><div class="video-thumb"><img alt="4 Tips for a Better Aligner Experience" loading="lazy" src="https://i.ytimg.com/vi/nlRWiMglLAE/hqdefault.jpg"/><div class="vplay-wrap"><div class="vplay-btn"><svg fill="var(--red)" stroke="none" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div></div><div class="vcat">Short · Tipps</div></div><div class="vbody"><div class="vtitle">4 Tips for a Better Aligner Experience</div><div class="vmeta"><span>▶ YouTube Short</span><span>nivellipso®</span></div></div></div>
+<div class="video-card" onclick="loadYT(this,'MwYlGjxVeEs')" style="cursor:pointer;"><div class="video-thumb"><img alt="Customizable Trimlines" loading="lazy" src="https://i.ytimg.com/vi/MwYlGjxVeEs/hqdefault.jpg"/><div class="vplay-wrap"><div class="vplay-btn"><svg fill="var(--red)" stroke="none" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div></div><div class="vcat">Short · Produkt</div></div><div class="vbody"><div class="vtitle">Customizable Trimlines</div><div class="vmeta"><span>▶ YouTube Short</span><span>nivellipso®</span></div></div></div>
+</div>
+</div>
+<!-- PODCASTS -->
+<div id="cat-podcasts" style="display:none;">
+<div class="n-fade"><div class="t-label" data-i18n="ac_e15">Podcast</div><h2 class="t-h2" data-i18n="ac_9">nivellipso® Podcast.<br/>Klinisches Wissen. Unterwegs.</h2><div class="t-rule"></div></div>
+<div class="podcast-feat n-fade">
+<div style="width:130px;height:130px;flex-shrink:0;background:linear-gradient(135deg,#c00000,#7a0000);border-radius:8px;display:flex;align-items:center;justify-content:center;"><span style="font-size:46px;">🎙️</span></div>
+<div style="flex:1;min-width:0;">
+<div class="pf-label">Folge 02 · Strategie</div>
+<div class="pf-title">Nivellipsos Strategie gegen die US-Giganten</div>
+<div class="pf-desc">Wie eine Schweizer Aligner-Manufaktur den Markt der grossen US-Anbieter angreift, Positionierung, Differenzierung und der konkrete Mehrwert für die Praxis.</div>
+<audio controls preload="none" style="width:100%;margin-top:12px;"><source src="../assets/audio/podcast-us-giganten.m4a" type="audio/mp4"/>Ihr Browser unterstützt kein Audio.</audio>
+<div class="pf-btns" style="display:none;">
+<a class="pf-btn" href="#"><svg fill="white" height="14" viewbox="0 0 24 24" width="14"><path d="M12 1a11 11 0 100 22A11 11 0 0012 1zm-2 5v8l6-4-6-4z"></path></svg> Spotify</a>
+<a class="pf-btn" href="#"><svg fill="white" height="14" viewbox="0 0 24 24" width="14"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04z"></path></svg> Apple</a>
+<a class="pf-btn" href="#"><svg fill="white" height="14" viewbox="0 0 24 24" width="14"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"></path></svg> YouTube</a>
+</div>
+</div>
+</div>
+<div class="podcast-list n-fade">
+<div class="podcast-ep" style="flex-wrap:wrap;align-items:center;"><div class="ep-num">01</div><div class="ep-info"><div class="ep-title">Nivellipsos trojanisches Pferd für Zahnarztpraxen</div><div class="ep-desc">Wie nivellipso® über die Partnerschaft mit der Praxis in den Markt kommt, der strategische Ansatz, einfach erklärt.</div></div><audio controls preload="none" style="width:100%;flex:1 0 100%;margin-top:10px;"><source src="../assets/audio/podcast-trojanisches-pferd.m4a" type="audio/mp4"/>Ihr Browser unterstützt kein Audio.</audio></div>
+</div>
+</div>
+<!-- TIPS -->
+<div id="cat-tips" style="display:none;">
+<div class="n-fade"><div class="t-label" data-i18n="ac_e16">Tipps &amp; Tricks</div><h2 class="t-h2" data-i18n="ac_10">Klinische Shortcuts.<br/>Für den Alltag.</h2><div class="t-rule"></div><p class="t-lead" data-i18n="ac_11" style="margin-bottom:28px;">Praxiserprobte Tipps von erfahrenen Kieferorthopäden, direkt anwendbar, klinisch validiert.</p></div>
+<div class="tips-grid n-fade">
+<div class="tip-card"><div class="tip-ico-wrap"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><div data-i18n="ac_e29" style="font-size:16px;font-weight:700;color:var(--black);margin-bottom:8px;">22-Stunden-Regel</div><p data-i18n="ac_12" style="font-size:13px;color:var(--grey);line-height:1.7;">Unter 20h/Tag verliert der Aligner biomechanische Wirksamkeit. Kommunizieren Sie 22h als medizinische Notwendigkeit, nicht als Empfehlung.</p></div>
+<div class="tip-card"><div class="tip-ico-wrap"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><div data-i18n="ac_e30" style="font-size:16px;font-weight:700;color:var(--black);margin-bottom:8px;">SOFT-Phase richtig erklären</div><p data-i18n="ac_13" style="font-size:13px;color:var(--grey);line-height:1.7;">Die SOFT-Phase ist nicht schwächer, sie ist für Gewebeanpassung optimiert. Fehlender Druck = korrekter Beginn, kein Fehler.</p></div>
+<div class="tip-card"><div class="tip-ico-wrap"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><div data-i18n="ac_e31" style="font-size:16px;font-weight:700;color:var(--black);margin-bottom:8px;">Freigabe vor Produktion</div><p data-i18n="ac_14" style="font-size:13px;color:var(--grey);line-height:1.7;">Niemals ohne Freigabe produzieren. Nutzen Sie die Stufenvisualisierung im Portal, Patient Buy-in vor Behandlung verdoppelt die Compliance.</p></div>
+<div class="tip-card"><div class="tip-ico-wrap"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path></svg></div><div data-i18n="ac_e32" style="font-size:16px;font-weight:700;color:var(--black);margin-bottom:8px;">Foto-Dokumentation</div><p data-i18n="ac_15" style="font-size:13px;color:var(--grey);line-height:1.7;">Standard: Frontal, lateral, okklusal. VISIBAL führt Patienten durch das Protokoll automatisch. Die Timeline ist klinisch und motivational wertvoll.</p></div>
+<div class="tip-card"><div class="tip-ico-wrap"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg></div><div data-i18n="ac_e33" style="font-size:16px;font-weight:700;color:var(--black);margin-bottom:8px;">Proaktive Intervention</div><p data-i18n="ac_16" style="font-size:13px;color:var(--grey);line-height:1.7;">Kontaktieren Sie Patienten nach Stufe 3, wenn VISIBAL Compliance-Abfall signalisiert. Frühe Intervention verhindert Stagnation.</p></div>
+<div class="tip-card"><div class="tip-ico-wrap"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></div><div data-i18n="ac_e34" style="font-size:16px;font-weight:700;color:var(--black);margin-bottom:8px;">Meilenstein-Motivation</div><p data-i18n="ac_17" style="font-size:13px;color:var(--grey);line-height:1.7;">Feiern Sie Phasen-Abschlüsse mit dem Patienten. „Sie sind in Phase 2", Mini-Milestones erhöhen die emotionale Bindung messbar.</p></div>
+</div>
+</div>
+<!-- MAILING -->
+<div id="cat-mailing" style="display:none;">
+<div class="n-fade"><div class="t-label" data-i18n="ac_e17">Patient-Mailing</div><h2 class="t-h2" data-i18n="ac_18">1× im Monat.<br/>Sanft. Klar. Wirksam.</h2><div class="t-rule"></div></div>
+<div class="mailing-hero n-fade">
+<div style="display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:flex-start;">
+<div class="ico-3d anim-bounce"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div>
+<div>
+<h3 data-i18n="ac_19" style="font-size:19px;font-weight:700;color:var(--black);margin-bottom:8px;">Das nivellipso® Patient-Mailing-System</h3>
+<p data-i18n="ac_20" style="font-size:14px;color:var(--grey);line-height:1.75;">Einmal pro Monat erhalten Ihre Schienen-Patienten automatisch eine phasenbasierte E-Mail, die richtige Botschaft, zum richtigen Zeitpunkt, in ihrer Sprache. Kein Massenversand. Keine generischen Templates. Klinisch abgestimmt.</p>
+<div style="display:flex;gap:20px;margin-top:16px;flex-wrap:wrap;">
+<span style="font-size:12px;font-weight:700;color:var(--black);display:flex;align-items:center;gap:6px;"><span style="color:var(--red);">✓</span> Automatisch phasenbasiert</span>
+<span style="font-size:12px;font-weight:700;color:var(--black);display:flex;align-items:center;gap:6px;"><span style="color:var(--red);">✓</span> 6 Sprachen</span>
+<span style="font-size:12px;font-weight:700;color:var(--black);display:flex;align-items:center;gap:6px;"><span style="color:var(--red);">✓</span> DSGVO-konform</span>
+<span data-i18n="ac_via_vis" style="font-size:12px;font-weight:700;color:var(--black);display:flex;align-items:center;gap:6px;"><span style="color:var(--red);">✓</span> Via VISIBAL oder E-Mail</span>
+</div>
+</div>
+</div>
+</div>
+<h3 data-i18n="ac_21" style="font-size:18px;font-weight:700;color:var(--black);margin-bottom:6px;">Jährlicher Inhaltsplan</h3>
+<p data-i18n="ac_22" style="font-size:13px;color:var(--grey);margin-bottom:20px;">Abgestimmt auf eine typische 12-Monats-Behandlung. Motivierend, informativ, nie aufdringlich.</p>
+<div class="mailing-grid n-fade">
+<div class="mail-card"><div class="mail-month">01</div><div class="mail-topic" data-i18n="ac_e35">Willkommen &amp; Start</div><div class="mail-desc" data-i18n="ac_e36">„Ihr erstes Lächeln hat begonnen." Überblick, SOFT-Phase erklärt, VISIBAL-App.</div></div>
+<div class="mail-card"><div class="mail-month">02</div><div class="mail-topic" data-i18n="ac_e37">22 Stunden, warum es zählt</div><div class="mail-desc" data-i18n="ac_e38">Sanfte Erinnerung mit Biomechanik-Erklärung. Jede Stunde ohne Schiene verzögert das Ergebnis.</div></div>
+<div class="mail-card"><div class="mail-month">03</div><div class="mail-topic" data-i18n="ac_e39">Erster Fortschritt sichtbar</div><div class="mail-desc" data-i18n="ac_e40">Foto-Dokumentation Stufe 1 vs. aktuell. Motivation durch sichtbares Ergebnis.</div></div>
+<div class="mail-card"><div class="mail-month">04</div><div class="mail-topic" data-i18n="ac_e41">Aktivphase beginnt (REGULAR)</div><div class="mail-desc" data-i18n="ac_e42">„Ab heute arbeitet Ihre Schiene auf Hochtouren." Phase-Wechsel und Druckgefühl erklärt.</div></div>
+<div class="mail-card"><div class="mail-month">05</div><div class="mail-topic" data-i18n="ac_e43">Halbzeit 🎉</div><div class="mail-desc" data-i18n="ac_e44">Meilenstein-E-Mail. Vorher-Nachher. „Sie sind genau auf Kurs."</div></div>
+<div class="mail-card"><div class="mail-month">06</div><div class="mail-topic" data-i18n="ac_e45">Tipps für Alltag &amp; Reise</div><div class="mail-desc" data-i18n="ac_e46">Sport, Reisen, Restaurantbesuche, kein Grund zur Ausrede.</div></div>
+<div class="mail-card"><div class="mail-month">07</div><div class="mail-topic" data-i18n="ac_e47">Pflege &amp; Hygiene</div><div class="mail-desc" data-i18n="ac_e48">Reinigung, Aufbewahrung, häufige Fehler vermeiden.</div></div>
+<div class="mail-card"><div class="mail-month">08</div><div class="mail-topic" data-i18n="ac_e49">Retentionsphase vorbereiten</div><div class="mail-desc" data-i18n="ac_e50">INTENSE erklärt. Bedeutung der Retention für Langzeitergebnis.</div></div>
+<div class="mail-card"><div class="mail-month">09</div><div class="mail-topic" data-i18n="ac_e51">INTENSE, letzte Meile</div><div class="mail-desc" data-i18n="ac_e52">„Fast geschafft, jetzt nicht nachlassen." Kein Rezidiv durch Konsequenz.</div></div>
+<div class="mail-card"><div class="mail-month">10</div><div class="mail-topic" data-i18n="ac_e53">Abschlussfoto vorbereiten</div><div class="mail-desc" data-i18n="ac_e54">Anleitung professionelles Foto. Teilen auf VISIBAL. Ihr Lächeln als Beweis.</div></div>
+<div class="mail-card"><div class="mail-month">11</div><div class="mail-topic" data-i18n="ac_e55">Retainer, lebenslang</div><div class="mail-desc" data-i18n="ac_e56">Warum Retainer wichtig sind. Rezidiv-Risiko. Bestellprozess.</div></div>
+<div class="mail-card"><div class="mail-month">12</div><div class="mail-topic" data-i18n="ac_e57">Behandlung abgeschlossen 🎊</div><div class="mail-desc" data-i18n="ac_e58">„Ihr Lächeln. Swiss-Made." Bewertungsanfrage. Empfehlungs-Einladung.</div></div>
+</div>
+</div>
+<!-- RESOURCES -->
+<div id="cat-resources" style="display:none;">
+<div class="n-fade"><div class="t-label" data-i18n="ac_e18">Ressourcen</div><h2 class="t-h2" data-i18n="ac_23">Dokumente &amp; Downloads.</h2><div class="t-rule"></div></div>
+<div class="n-fade" style="display:flex;flex-direction:column;gap:2px;">
+<div onmouseout="this.style.borderColor='var(--border)'" onmouseover="this.style.borderColor='var(--red)'" style="background:white;border:1px solid var(--border);padding:18px 22px;display:flex;align-items:center;gap:14px;transition:border-color .2s;"><div class="ico-3d-sm"><svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="13"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg></div><div style="flex:1;"><div data-i18n="ac_e90" style="font-size:14px;font-weight:700;color:var(--black);">Preisliste 2026 (CHF)</div><div data-i18n="ac_e91" style="font-size:11px;color:var(--grey);">Gültig ab 01.05.2026 · PDF</div></div><a class="btn-3d-outline" href="dokumente/preisliste-2026.html" target="_blank" style="font-size:11px;padding:6px 14px;">Öffnen</a></div>
+<div onmouseout="this.style.borderColor='var(--border)'" onmouseover="this.style.borderColor='var(--red)'" style="background:white;border:1px solid var(--border);padding:18px 22px;display:flex;align-items:center;gap:14px;transition:border-color .2s;"><div class="ico-3d-sm"><svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="13"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg></div><div style="flex:1;"><div data-i18n="ac_e92" style="font-size:14px;font-weight:700;color:var(--black);">Patientenaufklärungsbogen</div><div data-i18n="ac_e93" style="font-size:11px;color:var(--grey);">DE / FR / IT / EN · Druckfertig</div></div><a class="btn-3d-outline" href="dokumente/patientenaufklaerung.html" target="_blank" style="font-size:11px;padding:6px 14px;">Öffnen</a></div>
+<div onmouseout="this.style.borderColor='var(--border)'" onmouseover="this.style.borderColor='var(--red)'" style="background:white;border:1px solid var(--border);padding:18px 22px;display:flex;align-items:center;gap:14px;transition:border-color .2s;"><div class="ico-3d-sm"><svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="13"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg></div><div style="flex:1;"><div data-i18n="ac_e94" style="font-size:14px;font-weight:700;color:var(--black);"> Konformitätserklärung</div><div style="font-size:11px;color:var(--grey);"> </div></div><a class="btn-3d-outline" href="dokumente/konformitaetserklaerung.html" target="_blank" style="font-size:11px;padding:6px 14px;">Öffnen</a></div>
+<div onmouseout="this.style.borderColor='var(--border)'" onmouseover="this.style.borderColor='var(--red)'" style="background:white;border:1px solid var(--border);padding:18px 22px;display:flex;align-items:center;gap:14px;transition:border-color .2s;"><div class="ico-3d-sm"><svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="13"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg></div><div style="flex:1;"><div data-i18n="ac_e95" style="font-size:14px;font-weight:700;color:var(--black);">Praxis-Onboarding-Kit</div><div data-i18n="ac_e96" style="font-size:11px;color:var(--grey);">Workflow, Portal-Anleitung, Formulare</div></div><a class="btn-3d-outline" href="dokumente/praxis-onboarding-kit.html" target="_blank" style="font-size:11px;padding:6px 14px;">Öffnen</a></div>
+<div style="background:var(--bg);border:2px dashed var(--border);padding:18px 22px;display:flex;align-items:center;gap:14px;"><div style="font-size:22px;">📦</div><div style="flex:1;"><div data-i18n="ac_e97" style="font-size:14px;font-weight:700;color:var(--grey);">Weitere Ressourcen in Vorbereitung</div><div data-i18n="ac_e98" style="font-size:11px;color:var(--grey);">Klinische Studien, Behandlungsleitfäden</div></div><span class="coming-soon-badge" data-i18n="ac_e59">Q3 2026</span></div>
+</div>
+</div>
+</div>
+</section>
+<div class="newsletter-sec">
+<h2 data-i18n="ac_24">Academy Newsletter.</h2>
+<p data-i18n="ac_25">Neue Videos, Podcast-Episoden und klinische Tipps 1× im Monat. Kein Spam.</p>
+<div class="nl-form">
+<input class="nl-input" placeholder="Ihre E-Mail-Adresse" type="email"/>
+<button class="nl-btn" data-i18n="ac_26">Anmelden</button>
+</div>
+<p class="nl-note" data-i18n="ac_27">Für Kieferorthopäden und Dentalpraxen · DSGVO-konform · Jederzeit abbestellbar</p>
+</div>
+<button class="chat-toggle" id="chatToggle" onclick="toggleNivellChat()">
+<svg class="c-icon" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+<span class="c-label" data-i18n="cb_label_ac">Frage stellen</span>
+<svg class="c-close" fill="none" stroke="currentColor" stroke-width="2" style="display:none;" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"></path></svg>
+</button>
+<div class="chat-window" id="chatWindow">
+<div class="chat-hdr"><div style="width:34px;height:34px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">🎓</div><div style="margin-left:10px;"><div class="chat-hdr-name" data-i18n="ac_e12">Academy Assistent</div><div class="chat-hdr-sub" data-i18n="ac_e13">Videos · Podcasts · Tipps · Mailing</div></div></div>
+<div class="chat-msgs" id="chatMessages"><div class="msg-bot" data-i18n="ac_e2">Willkommen in der nivellipso® Academy! Ich helfe Ihnen, die richtigen Inhalte zu finden.</div></div>
+<div class="chat-suggs" id="chatSugg">
+<button class="sugg" data-i18n="ac_28" onclick="sendNivellSugg(this)">3-Schienen Video?</button>
+<button class="sugg" data-i18n="ac_29" onclick="sendNivellSugg(this)">Compliance-Tipps</button>
+<button class="sugg" data-i18n="ac_30" onclick="sendNivellSugg(this)">Podcast Episoden</button>
+</div>
+<div class="chat-input-row">
+<input class="chat-input" id="chatInput" onkeypress="if(event.key==='Enter')sendNivellChat()" placeholder="Ihre Frage zur Academy..."/>
+<button class="chat-send" onclick="sendNivellChat()"><svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg></button>
+</div>
+</div>
+<footer class="n-footer">
+<div class="n-footer-inner">
+<div class="n-footer-grid">
+<div class="n-footer-brand">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+    <div style="width:28px;height:28px;background:var(--red);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 16 16" fill="none" width="14" height="14"><rect x="7" y="2" width="2" height="12" fill="white"/><rect x="2" y="7" width="12" height="2" fill="white"/></svg></div>
+    <span style="font-size:17px;font-weight:700;color:white;">nivellipso<span style="color:var(--red);">®</span></span>
+  </div>
+  <p style="font-size:13px;color:rgba(255,255,255,.72);line-height:1.6;max-width:260px;"><span data-i18n="h_badge">smiles made in Switzerland.</span> <span data-i18n="ft_since">Seit 2015.</span></p>
+  <div class="n-fsoc-row" style="display:flex;gap:10px;margin-top:14px;">
+    <a href="https://www.instagram.com/nivellipso" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="n-fsoc"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+    <a href="https://www.linkedin.com/company/nivellipso" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="n-fsoc"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+    <a href="https://wa.me/41794697176" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="n-fsoc"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+  </div>
+</div>
+<div class="n-footer-col">
+  <h4 data-i18n="ft_pr">Produkte</h4>
+  <ul>
+    <li><a href="../aligner/" data-i18n="ft_al">Clear Aligners</a></li>
+    <li><a href="../brackets/" data-i18n="ft_br">Brackets</a></li>
+    <li><a href="../whitening/" data-i18n="ft_wh">Whitening</a></li>
+    <li><a href="../visibal/" style="color:var(--red);font-weight:700;">VISIBAL</a></li>
+    <li><a href="https://shop.nivellipso.com/" data-i18n="n_shop">Webshop</a></li>
+  </ul>
+</div>
+<div class="n-footer-col">
+  <h4 data-i18n="ft_co">Unternehmen</h4>
+  <ul>
+    <li><a href="../#about" data-i18n="ft_ab">Über uns</a></li>
+    <li><a href="../#contacts" data-i18n="ft_te">Team</a></li>
+    <li><a href="../#faq" data-i18n="ft_fq">FAQ</a></li>
+    <li><a href="https://nivellonlign.com/" target="_blank" rel="noopener noreferrer" data-i18n="ft_po">Doctor Portal</a></li>
+  </ul>
+</div>
+<div class="n-footer-col">
+  <h4 data-i18n="ft_le">Rechtliches</h4>
+  <ul>
+    <li><a href="../agb/" data-i18n="ft_to">AGB</a></li>
+    <li><a href="../datenschutz/" data-i18n="ft_pp">Datenschutz</a></li>
+    <li><a href="../impressum/" data-i18n="ft_im">Impressum</a></li>
+  </ul>
+</div>
+</div>
+<div class="n-footer-bottom" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
+  <p>Copyright &copy; 2026 Nivellmedical AG &middot; Altgraben 31, CH-4624 H&auml;rkingen &middot; +41 79 469 71 76</p>
+  <p>Built &amp; maintained by <a href="https://technext.asia/" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,.5);text-decoration:none;font-weight:700;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'">TechNext</a></p>
+</div>
+</div>
+</footer>
+<script src="../assets/js/nivell-i18n.js?v=20260822"></script>
+<script src="../assets/js/nivell-site.js?v=20260822"></script>
+<script>
+// Click-to-load YouTube (privacy-friendly: no YouTube iframe/cookies until the user clicks).
+function loadYT(el, id){
+ var holder = el.querySelector('.video-thumb') || el;
+ var ifr = document.createElement('iframe');
+ ifr.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+ ifr.title = 'YouTube · nivellipso®';
+ ifr.setAttribute('allow', 'autoplay; encrypted-media; fullscreen; picture-in-picture');
+ ifr.setAttribute('allowfullscreen', '');
+ ifr.setAttribute('loading', 'lazy');
+ ifr.style.cssText = 'width:100%;aspect-ratio:16/9;border:0;display:block;background:#000;';
+ holder.innerHTML = '';
+ holder.appendChild(ifr);
+ el.onclick = null;
+ el.style.cursor = 'default';
+}
+function showCat(cat,btn){
+ ['videos','podcasts','tips','mailing','resources'].forEach(c=>{
+ const el=document.getElementById('cat-'+c);
+ if(el)el.style.display=c===cat?'block':'none';
+ });
+ document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
+ if(btn)btn.classList.add('active');
+ setTimeout(()=>{
+ document.querySelectorAll('#cat-'+cat+' .n-fade').forEach(el=>{
+ el.classList.remove('visible');
+ requestAnimationFrame(()=>el.classList.add('visible'));
+ });
+ },20);
+}
+function toggleMenu(){
+ document.getElementById('mobileMenu').classList.toggle('open');
+ document.getElementById('hamburger').classList.toggle('open');
+}
+document.addEventListener('DOMContentLoaded',()=>{
+ initScrollAnimations();
+ setActiveNav();
+  const _sl = localStorage.getItem('nivell_lang');
+  if (_sl && window.T) { setNivellLang(_sl, window.T); updateLangUI(_sl, document.querySelector('.lang-opt[data-lang="'+_sl+'"]')); }
+ document.getElementById('cat-videos').style.display='block';
+ document.querySelectorAll('#cat-videos .n-fade').forEach(el=>setTimeout(()=>el.classList.add('visible'),100));
+});
+// Scroll-hide nav with hysteresis
+(function(){
+  var nav = document.querySelector('.n-nav');
+  var lastY = 0;
+  if (!nav) return;
+  window.addEventListener('scroll', function(){
+    var y = window.pageYOffset;
+    if (y <= 0) { nav.classList.remove('hdr-hide'); lastY = 0; return; }
+    if (y < lastY - 8) { nav.classList.remove('hdr-hide'); }
+    else if (y > lastY + 5 && y > 80) { nav.classList.add('hdr-hide'); }
+    lastY = y;
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+## Netlify Configuration für nivellipso.com
+## Diese Datei einfach mit den HTML-Files hochladen.
+## Sie konfiguriert Routing, Redirects, Headers automatisch.
+
+[build]
+  publish = "."
+
+# Security Headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(self), microphone=(), geolocation=(self)"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+
+# Cache CSS/JS/Images — short TTL with revalidation so deploys propagate
+# (we don't fingerprint filenames yet; switch to 1-year + immutable once we do)
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300, must-revalidate"
+
+[[headers]]
+  for = "/assets/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300, must-revalidate"
+
+[[headers]]
+  for = "/assets/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+# Legacy redirects → subfolder structure
+[[redirects]]
+  from = "/aligners"
+  to = "/aligner/"
+  status = 301
+
+[[redirects]]
+  from = "/aligner.html"
+  to = "/aligner/"
+  status = 301
+
+[[redirects]]
+  from = "/visibal.html"
+  to = "/visibal/"
+  status = 301
+
+[[redirects]]
+  from = "/academy.html"
+  to = "/academy/"
+  status = 301
+
+[[redirects]]
+  from = "/brackets.html"
+  to = "/brackets/"
+  status = 301
+
+[[redirects]]
+  from = "/whitening.html"
+  to = "/whitening/"
+  status = 301
+
+# 404 → Homepage
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 404
+
+# Force HTTPS
+[[redirects]]
+  from = "http://nivellipso.com/*"
+  to = "https://nivellipso.com/:splat"
+  status = 301
+  force = true
+
+# Force www → non-www (oder umgekehrt, je nach Präferenz)
+[[redirects]]
+  from = "https://www.nivellipso.com/*"
+  to = "https://nivellipso.com/:splat"
+  status = 301
+  force = true
+
+# Netlify Functions (AI Chatbot Backend)
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# API endpoint alias (cleaner URL)
+[[redirects]]
+  from = "/api/chat"
+  to = "/.netlify/functions/chat"
+  status = 200

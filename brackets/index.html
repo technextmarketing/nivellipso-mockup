@@ -1,0 +1,428 @@
+﻿<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta name="robots" content="noindex, nofollow"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Brackets &amp; Archwires, nivellipso® Professional Series</title>
+<meta content="Professional Bracket Series: metal, ceramic, self-ligating brackets by nivellipso®. Member pricing, personal promo code." name="description"/>
+<meta content="Brackets &amp; Archwires, nivellipso® Professional Series" property="og:title"/>
+<meta content="Professional Bracket Series: metal, ceramic, self-ligating brackets by nivellipso®. Member pricing, personal promo code." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://www.nivellipso.com/brackets/" property="og:url"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="../assets/css/nivell-design.css?v=20260822" rel="stylesheet"/>
+<style>
+.br-hero-bg{background:linear-gradient(145deg,#0a0000 0%,var(--black) 50%,#1a0000 100%);position:relative;overflow:hidden;}
+.br-hero-bg::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(192,0,0,.15) 0%,transparent 70%);pointer-events:none;}
+.br-hero-bg::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--red);}
+
+.bracket-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:32px;}
+.bracket-card{background:white;padding:32px 28px;border-top:3px solid var(--red);transition:transform .2s,box-shadow .2s;}
+.bracket-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.bracket-tag{font-size:9px;font-weight:700;letter-spacing:2.5px;color:var(--red);text-transform:uppercase;margin-bottom:8px;}
+.bracket-name{font-size:22px;font-weight:700;color:var(--black);margin-bottom:6px;letter-spacing:-.3px;}
+.bracket-sub{font-size:12px;color:var(--grey);text-transform:uppercase;letter-spacing:1px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+.bracket-price-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;}
+.bracket-price{font-size:30px;font-weight:700;color:var(--red);letter-spacing:-1px;line-height:1;}
+.bracket-price em{font-style:normal;font-size:13px;color:var(--grey);font-weight:400;}
+.bracket-vp{font-size:11px;color:var(--grey);text-align:right;}
+.bracket-desc{font-size:13px;color:var(--grey);line-height:1.7;margin-bottom:16px;}
+.bracket-feats{display:flex;flex-direction:column;gap:7px;}
+.bracket-feat{font-size:12px;color:var(--text);display:flex;gap:8px;align-items:flex-start;}
+.bracket-feat::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;}
+
+.catalog-table{width:100%;border-collapse:collapse;font-size:14px;margin-top:24px;}
+.catalog-table th{background:var(--red);color:white;padding:13px 18px;text-align:left;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;}
+.catalog-table th:nth-child(2),.catalog-table th:nth-child(3){text-align:right;}
+.catalog-table td{padding:12px 18px;border-bottom:1px solid var(--border);}
+.catalog-table td:nth-child(2),.catalog-table td:nth-child(3){text-align:right;font-weight:700;color:var(--black);}
+.catalog-table tr:nth-child(even) td{background:var(--bg);}
+.catalog-section{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--red);text-transform:uppercase;margin:32px 0 12px;}
+
+@media(max-width:768px){
+ .bracket-grid{grid-template-columns:1fr;gap:10px;}
+ .catalog-table{font-size:13px;}
+ .catalog-table th,.catalog-table td{padding:10px 12px;}
+}
+
+/* ══ MOBILE (640px) ═══════════════════════════════════════════════════ */
+@media(max-width:640px){
+  .n-rec-banner{flex-direction:column;gap:8px;padding:18px 20px;}
+  .phase-content{padding:16px 18px;}
+  .phase-name{font-size:16px;}
+}
+
+/* ── CHAT BUTTON MOBILE — consistent circle across all pages ── */
+@media(max-width:768px){
+  .chat-toggle{position:fixed;right:16px !important;bottom:16px !important;padding:0 !important;width:54px !important;height:54px !important;border-radius:50% !important;justify-content:center !important;gap:0 !important;font-size:0 !important;box-shadow:0 4px 16px rgba(192,0,0,.45) !important;}
+  .chat-toggle .c-label,.chat-toggle .c-close{display:none !important;}
+  .chat-toggle .c-icon{width:24px !important;height:24px !important;display:block !important;}
+}
+</style>
+<style>.hero-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.38;z-index:0;pointer-events:none;}.n-page-hero{position:relative;}.n-page-hero-inner{position:relative;z-index:1;}.bracket-img{width:100%;height:150px;object-fit:contain;margin:12px 0 6px;display:block;}</style>
+</head>
+<body>
+<div id="mockup-ribbon" style="position:fixed;bottom:0;left:0;z-index:99999;background:#ff9800;color:#000;font:700 12px/1 monospace;padding:7px 16px;letter-spacing:1px;">MOCKUP &mdash; Review-Version, nicht live</div>
+<!-- NAV -->
+<nav class="n-nav" id="mainNav">
+<div class="n-nav-inner">
+<a class="n-logo" href="../">
+<img src="../assets/images/logo_black.png" alt="nivellipso®" style="height:46px;width:auto;display:block;">
+</a>
+<ul class="n-links">
+<li class="n-dropdown">
+<a class="n-dropdown-trigger" href="#"><span data-i18n="n_prod">Produkte</span> <svg class="n-drop-chevron" fill="none" viewBox="0 0 10 6" width="10" height="6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5"/></svg></a>
+<div class="n-dropdown-menu">
+<a href="../aligner/" data-i18n="n_align">Schienen</a>
+<a href="../brackets/" data-i18n="n_brack">Brackets</a>
+<a href="../whitening/" data-i18n="n_white">Whitening</a>
+</div>
+</li>
+<li><a href="../visibal/" style="color:var(--red);font-weight:700;">VISIBAL</a></li>
+<li><a href="../#about" data-i18n="n_about">Über uns</a></li>
+<li><a href="../#contact-form" data-i18n="n_con">Kontakt</a></li>
+<li><a href="https://shop.nivellipso.com/" data-i18n="n_shop">Webshop</a></li>
+</ul>
+<div style="display:flex;align-items:center;gap:12px;">
+<button class="lang-btn" id="langBtn" aria-label="Select language">
+<span id="lFlag"></span><span id="lCode">DE</span>
+<svg viewBox="0 0 10 6" fill="none" width="10" height="6"><path d="M1 1l4 4 4-4" stroke="#111" stroke-width="1.5"/></svg>
+<div class="lang-dropdown">
+<div class="lang-opt active" data-lang="de" onclick="setNivellLang('de',window.T);updateLangUI('de',this)"><img src="https://flagcdn.com/20x15/de.png" alt="DE"> Deutsch</div>
+<div class="lang-opt" data-lang="en" onclick="setNivellLang('en',window.T);updateLangUI('en',this)"><img src="https://flagcdn.com/20x15/gb.png" alt="EN"> English</div>
+</div>
+</button>
+<a class="btn-3d" href="https://nivellonlign.com/" style="font-size:13px;padding:12px 22px;" target="_blank" data-i18n="n_portal">Doctor Portal →</a>
+<button class="n-hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</div>
+</div>
+<div class="n-mobile-menu" id="mobileMenu">
+<ul>
+<li><span class="n-mob-section" data-i18n="n_prod">Produkte</span></li>
+<li class="n-mob-sub"><a href="../aligner/" data-i18n="n_align">Schienen</a></li>
+<li class="n-mob-sub"><a href="../brackets/" data-i18n="n_brack">Brackets</a></li>
+<li class="n-mob-sub"><a href="../whitening/" data-i18n="n_white">Whitening</a></li>
+<li><a href="../visibal/" style="color:var(--red);font-weight:700;">VISIBAL</a></li>
+<li><a href="../#about" data-i18n="n_about">Über uns</a></li>
+<li><a href="../#contact-form" data-i18n="n_con">Kontakt</a></li>
+<li><a href="https://shop.nivellipso.com/" data-i18n="n_shop">Webshop</a></li>
+</ul>
+<a href="https://nivellonlign.com/" target="_blank" class="n-mobile-cta" data-i18n="n_portal">Doctor Portal →</a>
+</div>
+</nav>
+<!-- HERO -->
+<div class="n-page-hero br-hero-bg">
+<video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" src="../assets/videos/animated_braces_video.mp4"></video>
+<div class="n-page-hero-inner">
+<div class="n-breadcrumb"><a data-i18n="n_home" href="../">Home</a> <svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.5"></path></svg> <span data-i18n="br_e6">Brackets</span></div>
+<div class="t-label" data-i18n="br_e1" style="color:var(--red);">Professional Bracket Series</div>
+<h1 class="n-page-h1" data-i18n="br_1">Brackets &amp; Archwires.<br/><em>Direct from the Manufacturer.</em></h1>
+<p class="n-page-sub" data-i18n="br_2">Metal, ceramic, self-ligating. Archwires, ligatures, adhesives. Full range at special prices for nivellipso® clients, orderable directly via Doctor Portal.</p>
+<div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;">
+<a class="btn-3d" data-i18n="cta_br_typen" href="#types">Bracket Types</a>
+<a class="btn-3d-ghost" data-i18n="n_portal" href="https://nivellonlign.com/" target="_blank">Doctor Portal →</a>
+</div>
+</div>
+</div>
+<!-- BRACKET TYPES -->
+<section class="n-sec" id="types">
+<div class="n-sec-inner">
+<div class="n-fade">
+<div class="t-label" data-i18n="br_e7">Bracket Types</div>
+<h2 class="t-h2" data-i18n="br_3">Three Systems.<br/>For Every Clinical Requirement.</h2>
+<div class="t-rule"></div>
+</div>
+<div class="bracket-grid n-fade">
+<div class="bracket-card">
+<div class="bracket-tag" data-i18n="br_e18">Standard</div>
+<div class="bracket-name" data-i18n="br_e19">Metal Brackets</div>
+<img class="bracket-img" src="../assets/images/products/metal-brackets.png" alt="Metal Brackets" loading="lazy"/>
+<div class="bracket-sub" data-i18n="br_e20">MIM · 022" Slot · Roth/MBT</div>
+<div class="bracket-price-row">
+<div class="bracket-price">CHF 2.40<em data-i18n="br_extra_stk">/unit</em></div>
+</div>
+<div style="background:linear-gradient(135deg,#fff5e8,#fffdf5);border-left:3px solid #b8860b;padding:10px 14px;border-radius:6px;margin:6px 0 14px;display:flex;justify-content:space-between;align-items:center;font-size:12px;">
+<span data-i18n="br_e31" style="color:#8a6500;font-weight:600;">★ Member −45%</span>
+<span style="color:#b8860b;font-weight:700;font-size:14px;">CHF 1.85<em data-i18n="br_extra_stk" style="font-style:normal;font-size:11px;">/Stk</em></span>
+</div>
+<p class="bracket-desc" data-i18n="br_4">Robust, precise, cost-efficient. Metal injection moulded for the highest material quality and exact slot tolerances.</p>
+<div class="bracket-feats">
+<div class="bracket-feat" data-i18n="br_e32">MIM Technology</div>
+<div class="bracket-feat" data-i18n="br_e33">022" Slot Standard</div>
+<div class="bracket-feat" data-i18n="br_e34">Roth &amp; MBT available</div>
+<div class="bracket-feat" data-i18n="br_e35">High bond strength</div>
+</div>
+</div>
+<div class="bracket-card">
+<div class="bracket-tag" data-i18n="br_e21">Aesthetic</div>
+<div class="bracket-name" data-i18n="br_e22">Ceramic Brackets</div>
+<img class="bracket-img" src="../assets/images/products/ceramic-bracket.png" alt="Ceramic Brackets" loading="lazy"/>
+<div class="bracket-sub" data-i18n="br_e23">Monocrystalline · High Translucency</div>
+<div class="bracket-price-row">
+<div class="bracket-price">CHF 7.80<em data-i18n="br_extra_stk">/unit</em></div>
+</div>
+<div style="background:linear-gradient(135deg,#fff5e8,#fffdf5);border-left:3px solid #b8860b;padding:10px 14px;border-radius:6px;margin:6px 0 14px;display:flex;justify-content:space-between;align-items:center;font-size:12px;">
+<span data-i18n="br_e37" style="color:#8a6500;font-weight:600;">★ Member −45%</span>
+<span style="color:#b8860b;font-weight:700;font-size:14px;">CHF 4.00<em data-i18n="br_extra_stk" style="font-style:normal;font-size:11px;">/Stk</em></span>
+</div>
+<p class="bracket-desc" data-i18n="br_5">Maximum aesthetics through monocrystalline ceramic. Virtually invisible on the teeth. For demanding adult cases.</p>
+<div class="bracket-feats">
+<div class="bracket-feat" data-i18n="br_e38">Monocrystalline Sapphire</div>
+<div class="bracket-feat" data-i18n="br_e39">Highest Translucency</div>
+<div class="bracket-feat" data-i18n="br_e40">Stain-resistant</div>
+<div class="bracket-feat" data-i18n="br_e41">Smooth surface</div>
+</div>
+</div>
+<div class="bracket-card">
+<div class="bracket-tag" data-i18n="br_e24">Premium</div>
+<div class="bracket-name" data-i18n="br_e25">Self-Ligating</div>
+<img class="bracket-img" src="../assets/images/products/self-ligating-bracket.png" alt="Self-Ligating Brackets" loading="lazy"/>
+<div class="bracket-sub" data-i18n="br_e26">Passive · No Ligature Changes</div>
+<div class="bracket-price-row">
+<div class="bracket-price">CHF 9.50<em data-i18n="br_extra_stk">/unit</em></div>
+</div>
+<div style="background:linear-gradient(135deg,#fff5e8,#fffdf5);border-left:3px solid #b8860b;padding:10px 14px;border-radius:6px;margin:6px 0 14px;display:flex;justify-content:space-between;align-items:center;font-size:12px;">
+<span data-i18n="br_e43" style="color:#8a6500;font-weight:600;">★ Member −45%</span>
+<span style="color:#b8860b;font-weight:700;font-size:14px;">CHF 6.00<em data-i18n="br_extra_stk" style="font-style:normal;font-size:11px;">/Stk</em></span>
+</div>
+<p class="bracket-desc" data-i18n="br_6">Passive slide mechanism, no ligatures required. Reduces friction, accelerates treatment, shorter chair time.</p>
+<div class="bracket-feats">
+<div class="bracket-feat" data-i18n="br_e44">Passive mechanics</div>
+<div class="bracket-feat" data-i18n="br_e45">No ligatures</div>
+<div class="bracket-feat" data-i18n="br_e46">Reduced friction</div>
+<div class="bracket-feat" data-i18n="br_e47">Shorter appointments</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FULL CATALOG -->
+<section class="n-sec n-sec-bg">
+<div class="n-sec-inner">
+<div class="n-fade">
+<div class="t-label" data-i18n="br_e8">Full Catalogue</div>
+<h2 class="t-h2" data-i18n="br_7">Archwires, Accessories, Materials.</h2>
+<div class="t-rule"></div>
+<p class="t-lead" data-i18n="br_8" style="margin-bottom:16px;">All prices in CHF, excl. VAT 8.1%. Valid from 01.05.2026. Delivered from the manufacturing facility.</p>
+</div>
+<div class="n-fade">
+<div class="catalog-section" data-i18n="br_e9">Brackets</div>
+<table class="catalog-table">
+<thead><tr><th data-i18n="br_9">Article</th><th data-i18n="br_10">CHF/unit</th><th data-i18n="br_11">CHF/PU</th></tr></thead>
+<tbody>
+<tr><td data-i18n="br_12">Metal Brackets (MIM, 022" Slot, Roth/MBT)</td><td>2.40</td><td>48.00</td></tr>
+<tr><td data-i18n="br_13">Ceramic Brackets (Monocrystalline, aesthetic)</td><td>7.80</td><td>156.00</td></tr>
+<tr><td data-i18n="br_14">Self-Ligating Brackets (passive)</td><td>9.50</td><td>190.00</td></tr>
+<tr><td data-i18n="br_15">Buccal Tubes (1st molar, weldable)</td><td>14.00</td><td>280.00</td></tr>
+</tbody>
+</table>
+<div class="catalog-section" data-i18n="br_e10">Archwires</div>
+<table class="catalog-table">
+<thead><tr><th data-i18n="br_16">Article</th><th data-i18n="br_17">CHF/unit</th><th data-i18n="br_18">CHF/PU</th></tr></thead>
+<tbody>
+<tr><td data-i18n="br_19">NiTi Archwire round</td><td>3.20</td><td>64.00</td></tr>
+<tr><td data-i18n="br_20">NiTi Archwire rectangular</td><td>4.10</td><td>82.00</td></tr>
+<tr><td data-i18n="br_21">Steel Archwire round</td><td>1.80</td><td>36.00</td></tr>
+<tr><td data-i18n="br_22">Steel Archwire rectangular</td><td>2.40</td><td>48.00</td></tr>
+<tr><td data-i18n="br_23">TMA Archwire</td><td>5.60</td><td>112.00</td></tr>
+</tbody>
+</table>
+<div class="catalog-section" data-i18n="br_e11">Ligatures &amp; Power Chains</div>
+<table class="catalog-table">
+<thead><tr><th data-i18n="br_24">Article</th><th></th><th data-i18n="br_25">CHF/PU</th></tr></thead>
+<tbody>
+<tr><td data-i18n="br_26">Elastomeric Ligatures coloured (1,000 units)</td><td>—</td><td>28.00</td></tr>
+<tr><td data-i18n="br_27">Power Chain short/medium/long (15 spools)</td><td>—</td><td>62.00</td></tr>
+</tbody>
+</table>
+<div class="catalog-section" data-i18n="br_e12">Adhesive &amp; Bonding</div>
+<table class="catalog-table">
+<thead><tr><th data-i18n="br_28">Article</th><th></th><th data-i18n="br_29">CHF/PU</th></tr></thead>
+<tbody>
+<tr><td data-i18n="br_30">Etch &amp; Bond Kit (5 ml)</td><td>—</td><td>85.00</td></tr>
+<tr><td data-i18n="br_31">Bracket Adhesive light-curing (4×4g)</td><td>—</td><td>120.00</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- WHY -->
+<section class="n-sec">
+<div class="n-sec-inner">
+<div class="n-fade">
+<div class="t-label" data-i18n="br_e13">Why nivellipso Brackets?</div>
+<h2 class="t-h2" data-i18n="br_32">Direct from Manufacturer. Swiss Standard.</h2>
+<div class="t-rule"></div>
+</div>
+<div class="n-fade" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:32px;">
+<div class="card-3d card-3d-red">
+<div class="ico-circle" style="margin-bottom:14px;"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+<div class="t-h3" data-i18n="br_e27">Direct from the Manufacturer</div>
+<p data-i18n="br_33" style="font-size:14px;color:var(--grey);line-height:1.7;">No intermediaries, no mark-up. You pay manufacturer prices — fair and transparent.</p>
+</div>
+<div class="card-3d card-3d-red">
+<div class="ico-circle" style="margin-bottom:14px;"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path></svg></div>
+<div class="t-h3" data-i18n="br_e28"> Certified</div>
+<p data-i18n="br_34" style="font-size:14px;color:var(--grey);line-height:1.7;"> Class IIa. . Full traceability of every batch.</p>
+</div>
+<div class="card-3d card-3d-red">
+<div class="ico-circle" style="margin-bottom:14px;"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>
+<div class="t-h3" data-i18n="br_e29">Fast Delivery</div>
+<p data-i18n="br_35" style="font-size:14px;color:var(--grey);line-height:1.7;">Standard 14 business days within CH/FL. Free shipping from CHF 600.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- LOYALTY -->
+<section class="n-sec n-sec-bg" id="loyalty">
+<div class="n-sec-inner">
+  <div class="t-label n-fade">Loyalty Programme</div>
+  <h2 class="t-h2 n-fade">The more you order,<br>the greater your savings.</h2>
+  <div class="n-fade">
+  <div class="tier-grid">
+    <div class="tier-card" style="--tier:#64748b">
+      <span class="tier-badge">Standard</span>
+      <div class="tier-cases-l">Cases / Year</div>
+      <div class="tier-cases">1–9</div>
+      <div class="tier-disc">—</div>
+      <div class="tier-disc-l">Discount</div>
+    </div>
+    <div class="tier-card" style="--tier:#b45309">
+      <span class="tier-badge">Bronze</span>
+      <div class="tier-cases-l">Cases / Year</div>
+      <div class="tier-cases">10–24</div>
+      <div class="tier-disc">5%</div>
+      <div class="tier-disc-l">Discount</div>
+    </div>
+    <div class="tier-card" style="--tier:#475569">
+      <span class="tier-badge">Silver</span>
+      <div class="tier-cases-l">Cases / Year</div>
+      <div class="tier-cases">25–49</div>
+      <div class="tier-disc">10%</div>
+      <div class="tier-disc-l">Discount</div>
+    </div>
+    <div class="tier-card" style="--tier:#a16207">
+      <span class="tier-badge">Gold</span>
+      <div class="tier-cases-l">Cases / Year</div>
+      <div class="tier-cases">50–99</div>
+      <div class="tier-disc">15%</div>
+      <div class="tier-disc-l">Discount</div>
+    </div>
+    <div class="tier-card is-top" style="--tier:#6d28d9">
+      <span class="tier-ribbon">Top</span>
+      <span class="tier-badge">Platinum</span>
+      <div class="tier-cases-l">Cases / Year</div>
+      <div class="tier-cases">100+</div>
+      <div class="tier-disc">20%</div>
+      <div class="tier-disc-l">Discount</div>
+    </div>
+  </div>
+  <div class="win-back">
+    <div class="wb-item"><div class="wb-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg></div><div><div class="wb-t">Reconnect –15%</div><div class="wb-d">First Three-Aligner order for inactive practices</div></div></div>
+    <div class="wb-item"><div class="wb-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div><div class="wb-t">60-Day Payment Terms</div><div class="wb-d">For the first 3 orders after reactivation</div></div></div>
+    <div class="wb-item"><div class="wb-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div><div><div class="wb-t">Free Onboarding</div><div class="wb-d">Personal practice visit · Q2/Q3 2026</div></div></div>
+  </div>
+  <div style="margin-top:20px;">
+    <a class="btn-3d" href="#contact-form">REQUEST WIN-BACK →</a>
+  </div>
+  </div>
+</div>
+</section>
+<!-- CHATBOT -->
+<button class="chat-toggle" id="chatToggle" onclick="toggleNivellChat()">
+<svg class="c-icon" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+<span class="c-label" data-i18n="cb_label_br">Bracket Questions?</span>
+<svg class="c-close" fill="none" stroke="currentColor" stroke-width="2" style="display:none;" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"></path></svg>
+</button>
+<div class="chat-window" id="chatWindow">
+<div class="chat-hdr"><div style="width:34px;height:34px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">⚙️</div><div style="margin-left:10px;"><div class="chat-hdr-name" data-i18n="br_e16">Bracket Advice</div><div class="chat-hdr-sub" data-i18n="br_e17">Materials · Prices · Delivery</div></div></div>
+<div class="chat-msgs" id="chatMessages"><div class="msg-bot" data-i18n="br_e4">Hello! I'm here to answer your questions about brackets, archwires, and accessories.</div></div>
+<div class="chat-suggs" id="chatSugg">
+<button class="sugg" data-i18n="br_40" onclick="sendNivellSugg(this)">Metal vs Ceramic?</button>
+<button class="sugg" data-i18n="br_41" onclick="sendNivellSugg(this)">Self-Ligating Benefits</button>
+<button class="sugg" data-i18n="br_42" onclick="sendNivellSugg(this)">Delivery Time</button>
+</div>
+<div class="chat-input-row">
+<input class="chat-input" id="chatInput" onkeypress="if(event.key==='Enter')sendNivellChat()" placeholder="Your question..."/>
+<button class="chat-send" onclick="sendNivellChat()"><svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg></button>
+</div>
+</div>
+<!-- FOOTER -->
+<footer class="n-footer">
+<div class="n-footer-inner">
+<div class="n-footer-grid">
+<div class="n-footer-brand">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+    <div style="width:28px;height:28px;background:var(--red);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 16 16" fill="none" width="14" height="14"><rect x="7" y="2" width="2" height="12" fill="white"/><rect x="2" y="7" width="12" height="2" fill="white"/></svg></div>
+    <span style="font-size:17px;font-weight:700;color:white;">nivellipso<span style="color:var(--red);">®</span></span>
+  </div>
+  <p style="font-size:13px;color:rgba(255,255,255,.72);line-height:1.6;max-width:260px;"><span data-i18n="h_badge">smiles made in Switzerland.</span> <span data-i18n="ft_since">Seit 2015.</span></p>
+  <div class="n-fsoc-row" style="display:flex;gap:10px;margin-top:14px;">
+    <a href="https://www.instagram.com/nivellipso" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="n-fsoc"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+    <a href="https://www.linkedin.com/company/nivellipso" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="n-fsoc"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+    <a href="https://wa.me/41794697176" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="n-fsoc"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+  </div>
+</div>
+<div class="n-footer-col">
+  <h4 data-i18n="ft_pr">Produkte</h4>
+  <ul>
+    <li><a href="../aligner/" data-i18n="ft_al">Clear Aligners</a></li>
+    <li><a href="../brackets/" data-i18n="ft_br">Brackets</a></li>
+    <li><a href="../whitening/" data-i18n="ft_wh">Whitening</a></li>
+    <li><a href="../visibal/" style="color:var(--red);font-weight:700;">VISIBAL</a></li>
+    <li><a href="https://shop.nivellipso.com/" data-i18n="n_shop">Webshop</a></li>
+  </ul>
+</div>
+<div class="n-footer-col">
+  <h4 data-i18n="ft_co">Unternehmen</h4>
+  <ul>
+    <li><a href="../#about" data-i18n="ft_ab">Über uns</a></li>
+    <li><a href="../#contacts" data-i18n="ft_te">Team</a></li>
+    <li><a href="../#faq" data-i18n="ft_fq">FAQ</a></li>
+    <li><a href="https://nivellonlign.com/" target="_blank" rel="noopener noreferrer" data-i18n="ft_po">Doctor Portal</a></li>
+  </ul>
+</div>
+<div class="n-footer-col">
+  <h4 data-i18n="ft_le">Rechtliches</h4>
+  <ul>
+    <li><a href="../agb/" data-i18n="ft_to">AGB</a></li>
+    <li><a href="../datenschutz/" data-i18n="ft_pp">Datenschutz</a></li>
+    <li><a href="../impressum/" data-i18n="ft_im">Impressum</a></li>
+  </ul>
+</div>
+</div>
+<div class="n-footer-bottom" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
+  <p>Copyright &copy; 2026 Nivellmedical AG &middot; Altgraben 31, CH-4624 H&auml;rkingen &middot; +41 79 469 71 76</p>
+  <p>Built &amp; maintained by <a href="https://technext.asia/" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,.5);text-decoration:none;font-weight:700;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'">TechNext</a></p>
+</div>
+</div>
+</footer>
+<script src="../assets/js/nivell-i18n.js?v=20260822"></script>
+<script src="../assets/js/nivell-site.js?v=20260822"></script>
+<script>
+function toggleMenu(){
+ document.getElementById('mobileMenu').classList.toggle('open');
+ document.getElementById('hamburger').classList.toggle('open');
+}
+document.addEventListener('DOMContentLoaded',()=>{
+ initScrollAnimations();
+ setActiveNav();
+});
+// Scroll-hide nav with hysteresis
+(function(){
+  var nav = document.querySelector('.n-nav');
+  var lastY = 0;
+  if (!nav) return;
+  window.addEventListener('scroll', function(){
+    var y = window.pageYOffset;
+    if (y <= 0) { nav.classList.remove('hdr-hide'); lastY = 0; return; }
+    if (y < lastY - 8) { nav.classList.remove('hdr-hide'); }
+    else if (y > lastY + 5 && y > 80) { nav.classList.add('hdr-hide'); }
+    lastY = y;
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>

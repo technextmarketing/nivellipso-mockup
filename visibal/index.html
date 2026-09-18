@@ -1,0 +1,770 @@
+﻿<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta name="robots" content="noindex, nofollow"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VISIBAL, nivellipso® Patient App &amp; Clinical Dashboard</title>
+<meta content="VISIBAL, die klinische Begleit-Plattform für Schienen-Patienten. Patient-App, Compliance-Dashboard für Ärzte, Mailing und Podcast." name="description"/>
+<meta content="VISIBAL, nivellipso® Patient App &amp; Clinical Dashboard" property="og:title"/>
+<meta content="VISIBAL, die klinische Begleit-Plattform für Schienen-Patienten. Patient-App, Compliance-Dashboard für Ärzte, Mailing und Podcast." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://www.nivellipso.com/visibal/" property="og:url"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="../assets/css/nivell-design.css?v=20260822" rel="stylesheet"/>
+<style>
+/* ── VISIBAL-SPECIFIC ── */
+:root { --vis-dark: #0d0000; }
+
+/* HERO */
+.vis-hero { background: linear-gradient(140deg, #0a0000 0%, #111 55%, #1a0000 100%); position: relative; overflow: hidden; padding: 130px 40px 80px; margin-top: 70px; min-height: calc(100vh - 70px); }
+.vis-hero::before { content: ''; position: absolute; top: -120px; right: -120px; width: 560px; height: 560px; background: radial-gradient(circle, rgba(192,0,0,.16) 0%, transparent 68%); pointer-events: none; }
+.vis-hero-inner { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: 1fr 1.15fr; gap: 64px; align-items: center; position: relative; z-index: 1; }
+
+/* PHONES SHOWCASE - 3 screens */
+.phones-showcase { display: flex; align-items: flex-end; justify-content: center; position: relative; padding: 10px 0 0; gap: 0; }
+.phone-wrap { position: relative; flex-shrink: 0; }
+.phone-wrap.left { transform: rotate(-13deg) translateY(22px) translateX(18px); opacity: .72; z-index: 1; transition: all .4s ease; }
+.phone-wrap.center { z-index: 3; filter: drop-shadow(0 20px 40px rgba(0,0,0,.5)); }
+.phone-wrap.right { transform: rotate(13deg) translateY(22px) translateX(-18px); opacity: .72; z-index: 1; transition: all .4s ease; }
+.phone-wrap.left:hover { opacity: 1; transform: rotate(-7deg) translateY(10px) translateX(10px); z-index: 4; }
+.phone-wrap.right:hover { opacity: 1; transform: rotate(7deg) translateY(10px) translateX(-10px); z-index: 4; }
+.phone-device { width: 168px; background: #1a1a1a; border-radius: 28px; padding: 8px; box-shadow: 0 0 0 1px rgba(255,255,255,.07); }
+.phone-device.ctr { width: 192px; border-radius: 32px; padding: 10px; }
+.phone-notch { width: 42px; height: 4px; background: rgba(255,255,255,.13); border-radius: 2px; margin: 0 auto 5px; }
+.phone-screen { background: white; border-radius: 20px; overflow: hidden; }
+.phone-device.ctr .phone-screen { border-radius: 23px; }
+
+/* Screen components */
+.ps-hdr { background: var(--red); padding: 13px 11px 10px; display: flex; align-items: center; justify-content: space-between; }
+.ps-logo { font-size: 11px; font-weight: 700; color: white; }
+.ps-ico-sm { width: 20px; height: 20px; background: rgba(255,255,255,.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; }
+.ps-body { padding: 10px; }
+.ps-grey { font-size: 7px; color: var(--grey); }
+.ps-name { font-size: 11px; font-weight: 700; color: var(--black); margin-bottom: 9px; }
+.ps-prog { background: var(--bg); border-radius: 6px; padding: 8px; margin-bottom: 6px; }
+.ps-plabel { font-size: 6px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
+.ps-ptitle { font-size: 9px; font-weight: 700; color: var(--black); margin-bottom: 4px; }
+.ps-bar { background: #e0e0e0; height: 4px; border-radius: 2px; }
+.ps-fill { background: var(--red); height: 4px; border-radius: 2px; }
+.ps-pct { display: flex; justify-content: space-between; font-size: 7px; color: var(--grey); margin-top: 2px; }
+.ps-badge { display: inline-block; background: var(--red); color: white; font-size: 6px; font-weight: 700; padding: 2px 6px; margin-top: 3px; }
+.ps-chat-out { background: var(--red); color: white; border-radius: 6px 6px 2px 6px; padding: 5px 7px; font-size: 7px; line-height: 1.35; margin-bottom: 3px; }
+.ps-chat-in { background: var(--bg); border-radius: 6px 6px 6px 2px; padding: 5px 7px; font-size: 7px; color: var(--text); line-height: 1.35; margin-bottom: 3px; }
+.ps-ok { background: #f0fff4; border-left: 2px solid #2d8a4e; padding: 4px 7px; font-size: 7px; color: #2d8a4e; font-weight: 700; margin-bottom: 4px; }
+.ps-tabs { display: flex; border-top: 1px solid var(--border); }
+.ps-tab { flex: 1; padding: 5px 0; text-align: center; font-size: 5.5px; color: var(--grey); }
+.ps-tab.a { color: var(--red); }
+.ps-tab-ico { font-size: 10px; display: block; margin-bottom: 1px; }
+/* milestone screen */
+.ms-center { text-align: center; padding: 10px 8px; }
+.ms-emoji { font-size: 28px; margin-bottom: 5px; animation: bounce-in 2s ease-in-out infinite; }
+.ms-title { font-size: 11px; font-weight: 700; color: var(--black); margin-bottom: 3px; }
+.ms-sub { font-size: 8px; color: var(--grey); line-height: 1.4; margin-bottom: 7px; }
+.ms-stars { display: flex; justify-content: center; gap: 2px; font-size: 12px; }
+.ms-prog-wrap { display: flex; align-items: center; justify-content: center; margin-bottom: 6px; }
+.ms-ring { width: 60px; height: 60px; position: relative; }
+.ms-ring svg { width: 60px; height: 60px; transform: rotate(-90deg); }
+.ms-ring-txt { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--red); }
+/* dashboard screen */
+.db-hdr { background: var(--bg); padding: 7px 9px; border-bottom: 1px solid var(--border); }
+.db-hdr-t { font-size: 9px; font-weight: 700; color: var(--black); }
+.db-hdr-s { font-size: 7px; color: var(--grey); }
+.db-row { display: flex; align-items: center; justify-content: space-between; padding: 5px 9px; border-bottom: 1px solid rgba(0,0,0,.05); }
+.db-name { font-size: 8px; font-weight: 700; color: var(--black); }
+.db-meta { font-size: 6.5px; color: var(--grey); }
+.db-badge { font-size: 6.5px; font-weight: 700; padding: 2px 5px; border-radius: 2px; }
+.bg-ok { background: #e8f8ee; color: #2d8a4e; }
+.bg-warn { background: #fff8e8; color: #b87300; }
+.bg-alert{ background: #ffe8e8; color: var(--red); }
+.db-summary { display: flex; padding: 6px 9px; gap: 6px; border-top: 1px solid var(--border); }
+.db-sstat { flex: 1; text-align: center; }
+.db-sn { font-size: 13px; font-weight: 700; color: var(--black); }
+.db-sn em { font-style: normal; color: var(--red); }
+.db-sl { font-size: 6px; color: var(--grey); text-transform: uppercase; letter-spacing: .5px; }
+
+/* SECTIONS */
+.vis-sec { padding: 80px 40px; }
+.vis-sec-dark { background: var(--black); }
+.vis-sec-bg { background: var(--bg); }
+.vis-inner { max-width: var(--max-w); margin: 0 auto; }
+
+/* Feature grid */
+.feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 36px; }
+.feat-card { background: white; padding: 28px 24px; border-top: 3px solid transparent; transition: border-color .2s, transform .2s, box-shadow .2s; }
+.feat-card:hover { border-top-color: var(--red); transform: translateY(-4px); box-shadow: var(--shadow); }
+.feat-card:hover .ico-circle { background: var(--red); transform: rotate(8deg) scale(1.1); }
+.feat-card:hover .ico-circle svg { color: white; }
+.ico-circle { width: 44px; height: 44px; background: var(--red-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; transition: all .2s; }
+.ico-circle svg { width: 20px; height: 20px; color: var(--red); }
+
+/* Mailing timeline */
+.mailing-timeline { display: flex; flex-direction: column; gap: 2px; }
+.mail-split { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: flex-start; }
+.ml-item { background: white; border: 1px solid var(--border); padding: 18px 24px; display: flex; gap: 20px; align-items: flex-start; border-left: 4px solid transparent; transition: border-color .2s, transform .15s; }
+.ml-item:hover { border-left-color: var(--red); transform: translateX(4px); }
+.ml-num { font-size: 32px; font-weight: 700; color: var(--red); opacity: .12; letter-spacing: -2px; line-height: 1; min-width: 42px; flex-shrink: 0; }
+.ml-content { flex: 1; }
+.ml-topic { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 4px; }
+.ml-desc { font-size: 13px; color: var(--grey); line-height: 1.6; }
+.ml-tag { font-size: 10px; font-weight: 700; color: var(--red); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; }
+
+/* Podcast list */
+.pod-list { display: flex; flex-direction: column; gap: 2px; }
+.pod-feature-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 48px; align-items: flex-start; }
+.pod-ep { background: white; border: 1px solid var(--border); padding: 16px 22px; display: flex; gap: 14px; align-items: center; transition: border-color .2s, transform .15s; cursor: pointer; }
+.pod-ep:hover { border-color: var(--red); transform: translateX(3px); }
+.pod-play { width: 40px; height: 40px; background: var(--red); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 3px 0 var(--red-dark), 0 4px 12px var(--red-glow); transition: transform .15s; }
+.pod-ep:hover .pod-play { transform: scale(1.08); }
+.pod-play svg { width: 14px; height: 14px; color: white; margin-left: 2px; }
+.pod-num { font-size: 24px; font-weight: 700; color: var(--red); opacity: .12; letter-spacing: -1.5px; line-height: 1; min-width: 36px; }
+.pod-info { flex: 1; }
+.pod-title { font-size: 14px; font-weight: 700; color: var(--black); margin-bottom: 3px; }
+.pod-desc { font-size: 12px; color: var(--grey); line-height: 1.45; }
+.pod-meta { font-size: 10px; color: var(--grey); margin-top: 4px; display: flex; gap: 10px; }
+.pod-dur { font-size: 11px; font-weight: 700; color: var(--red); flex-shrink: 0; }
+
+/* Patient info cards */
+.info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3px; margin-top: 36px; }
+.info-card { background: white; border: 1px solid var(--border); padding: 24px; transition: transform .2s, box-shadow .2s; }
+.info-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.info-q { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 8px; padding-left: 14px; border-left: 3px solid var(--red); }
+.info-a { font-size: 13px; color: var(--grey); line-height: 1.7; }
+
+/* Business model */
+.bm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 36px; }
+.bm-card { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); padding: 28px 24px; transition: border-color .2s, background .2s, transform .2s; }
+.bm-card:hover { border-color: var(--red); background: rgba(192,0,0,.06); transform: translateY(-4px); }
+.bm-card.featured { border-color: var(--red); background: rgba(192,0,0,.08); }
+.bm-tier { font-size: 9px; font-weight: 700; letter-spacing: 2px; color: var(--red); text-transform: uppercase; margin-bottom: 8px; }
+.bm-plan { font-size: 22px; font-weight: 700; color: white; margin-bottom: 4px; }
+.bm-price { font-size: 32px; font-weight: 700; color: white; letter-spacing: -1.5px; }
+.bm-price em { font-style: normal; font-size: 14px; color: rgba(255,255,255,.4); font-weight: 400; }
+.bm-features { margin-top: 20px; display: flex; flex-direction: column; gap: 9px; }
+.bm-feat { font-size: 13px; color: rgba(255,255,255,.55); display: flex; gap: 8px; align-items: flex-start; }
+.bm-feat::before { content: '✓'; color: var(--red); font-weight: 700; flex-shrink: 0; }
+
+/* CTA section */
+.vis-cta { background: var(--red); padding: 60px 40px; text-align: center; }
+.vis-cta h2 { font-size: clamp(22px,3vw,40px); font-weight: 700; color: white; letter-spacing: -1px; margin-bottom: 12px; }
+.vis-cta p { font-size: 15px; color: rgba(255,255,255,.7); margin-bottom: 32px; max-width: 520px; margin-left: auto; margin-right: auto; }
+
+/* Roadmap */
+.roadmap { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-top: 32px; }
+.rm-step { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); padding: 22px 18px; transition: border-color .2s, transform .2s; }
+.rm-step:hover { border-color: var(--red); transform: translateY(-3px); }
+.rm-step.done { border-top: 3px solid var(--red); }
+.rm-q { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: var(--red); text-transform: uppercase; margin-bottom: 8px; }
+.rm-title { font-size: 15px; font-weight: 700; color: white; margin-bottom: 6px; }
+.rm-desc { font-size: 12px; color: rgba(255,255,255,.4); line-height: 1.6; }
+.rm-dot { width: 8px; height: 8px; background: var(--red); border-radius: 50%; margin-bottom: 12px; animation: pulse-ring 2s ease-out infinite; }
+
+/* Mobile */
+@media(max-width:768px){
+ .vis-hero { padding: 90px 20px 56px; }
+ .vis-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+ .vis-sec { padding: 56px 20px; }
+ .feat-grid { grid-template-columns: 1fr; gap: 6px; }
+ .feat-card { padding: 14px 16px; display: grid; grid-template-columns: 40px 1fr; grid-template-rows: auto auto; column-gap: 12px; row-gap: 4px; }
+ .feat-card .ico-circle { grid-column: 1; grid-row: 1 / span 2; align-self: start; width: 36px; height: 36px; margin-bottom: 0; }
+ .feat-card .ico-circle svg { width: 16px; height: 16px; }
+ .feat-card .t-h3 { grid-column: 2; grid-row: 1; font-size: 14px; margin: 0; }
+ .feat-card p { grid-column: 2; grid-row: 2; font-size: 12px !important; line-height: 1.5; margin: 0; }
+ .info-grid { grid-template-columns: 1fr; }
+ .bm-grid { grid-template-columns: 1fr; gap: 10px; }
+ .roadmap { grid-template-columns: 1fr 1fr; gap: 10px; }
+ .pod-feature-grid { grid-template-columns: 1fr; gap: 24px; }
+ .mailing-timeline { gap: 6px; }
+ .mail-split { grid-template-columns: 1fr; gap: 28px; }
+ /* Catch-all: collapse any inline fixed-column grids that would overflow on mobile */
+ [style*="grid-template-columns:repeat(4"] { grid-template-columns: repeat(2,1fr) !important; }
+ [style*="grid-template-columns:repeat(3"] { grid-template-columns: repeat(2,1fr) !important; }
+ .phones-showcase { margin: 0 auto; }
+ .phone-device { width: 140px; border-radius: 22px; padding: 7px; }
+ .phone-device.ctr { width: 160px; border-radius: 26px; padding: 8px; }
+ .phone-screen { min-height: 260px; }
+ .vis-cta { padding: 48px 20px; }
+}
+@media(max-width:480px){
+ .roadmap { grid-template-columns: 1fr; }
+ .ml-num { display: none; }
+ .pod-num { display: none; }
+ /* Hero heading + stats smaller on mobile */
+ .vis-hero h1 { font-size: 22px !important; letter-spacing: -0.5px !important; margin-bottom: 12px !important; }
+ .vis-hero p { font-size: 13px !important; line-height: 1.6 !important; margin-bottom: 20px !important; }
+ .vis-hero [style*="font-size:14px;letter-spacing:2.5px"] { font-size: 10px !important; padding: 4px 10px !important; margin-bottom: 12px !important; }
+ .vis-hero [style*="grid-template-columns:repeat(3,1fr)"] { margin-top: 20px !important; padding-top: 14px !important; }
+ .vis-hero [style*="font-size:28px"] { font-size: 18px !important; }
+ .vis-hero [style*="font-size:9px"] { font-size: 7px !important; }
+ /* Force all 3 phones in one row — no wrapping, allow edge bleed */
+ .phones-showcase {
+   flex-wrap: nowrap !important;
+   max-width: none !important;
+   overflow: visible !important;
+   justify-content: center;
+   transform: none;
+   margin-bottom: 0;
+ }
+ .phone-device { width: 110px !important; border-radius: 20px !important; padding: 6px !important; }
+ .phone-device.ctr { width: 128px !important; border-radius: 24px !important; padding: 7px !important; }
+ .phone-screen { min-height: 220px !important; }
+ .phone-notch { width: 32px; height: 3px; margin-bottom: 3px; }
+ .phone-wrap.left { transform: rotate(-13deg) translateY(18px) translateX(14px); }
+ .phone-wrap.right { transform: rotate(13deg) translateY(18px) translateX(-14px); }
+ /* Scale down all text inside phone screens */
+ .ps-name,.ms-title { font-size: 7px !important; margin-bottom: 4px; }
+ .ps-grey { font-size: 5px !important; }
+ .ps-plabel { font-size: 4.5px !important; letter-spacing: .5px; }
+ .ps-ptitle { font-size: 6px !important; margin-bottom: 2px; }
+ .ps-pct { font-size: 5.5px !important; }
+ .ps-badge { font-size: 4.5px !important; padding: 1px 4px; }
+ .ps-chat-out,.ps-chat-in { font-size: 5.5px !important; padding: 3px 5px; margin-bottom: 2px; }
+ .ps-ok { font-size: 5.5px !important; padding: 3px 5px; }
+ .ps-tab { font-size: 4px !important; padding: 4px 0; }
+ .ps-tab-ico { font-size: 7px !important; }
+ .ps-body { padding: 6px !important; }
+ .ps-prog { padding: 6px !important; margin-bottom: 6px; }
+ .db-hdr-t { font-size: 6px !important; }
+ .db-hdr-s { font-size: 5px !important; }
+ .db-name { font-size: 5.5px !important; }
+ .db-meta { font-size: 4.5px !important; }
+ .db-badge { font-size: 4.5px !important; padding: 1px 3px; }
+ .db-sn { font-size: 9px !important; }
+ .db-sl { font-size: 4px !important; }
+ .db-row { padding: 3px 6px; }
+ .db-hdr { padding: 4px 6px; }
+ .ms-sub { font-size: 5px !important; }
+ .ms-emoji { font-size: 18px !important; }
+ .ms-ring { width: 40px; height: 40px; }
+ .ms-ring svg { width: 40px; height: 40px; }
+ .ms-ring-txt { font-size: 8px !important; }
+}
+
+/* ══ MOBILE (640px) ═══════════════════════════════════════════════════ */
+@media(max-width:640px){
+  .n-rec-banner{flex-direction:column;gap:8px;padding:18px 20px;}
+  .phase-content{padding:16px 18px;}
+  .phase-name{font-size:16px;}
+}
+
+/* ── CHAT BUTTON MOBILE — consistent circle across all pages ── */
+@media(max-width:768px){
+  .chat-toggle{position:fixed;right:16px !important;bottom:16px !important;padding:0 !important;width:54px !important;height:54px !important;border-radius:50% !important;justify-content:center !important;gap:0 !important;font-size:0 !important;box-shadow:0 4px 16px rgba(192,0,0,.45) !important;}
+  .chat-toggle .c-label,.chat-toggle .c-close{display:none !important;}
+  .chat-toggle .c-icon{width:24px !important;height:24px !important;display:block !important;}
+}
+</style>
+</head>
+<body>
+<!-- NAV -->
+<nav class="n-nav" id="mainNav">
+<div class="n-nav-inner">
+<a class="n-logo" href="../">
+<img src="../assets/images/logo_black.png" alt="nivellipso®" style="height:46px;width:auto;display:block;">
+</a>
+<ul class="n-links">
+<li class="n-dropdown">
+<a class="n-dropdown-trigger" href="#"><span data-i18n="n_prod">Produkte</span> <svg class="n-drop-chevron" fill="none" viewBox="0 0 10 6" width="10" height="6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5"/></svg></a>
+<div class="n-dropdown-menu">
+<a href="../aligner/" data-i18n="n_align">Schienen</a>
+<a href="../brackets/" data-i18n="n_brack">Brackets</a>
+<a href="../whitening/" data-i18n="n_white">Whitening</a>
+</div>
+</li>
+<li><a href="../visibal/" style="color:var(--red);font-weight:700;">VISIBAL</a></li>
+<li><a href="../#about" data-i18n="n_about">Über uns</a></li>
+<li><a href="../#contact-form" data-i18n="n_con">Kontakt</a></li>
+<li><a href="https://shop.nivellipso.com/" data-i18n="n_shop">Webshop</a></li>
+</ul>
+<div style="display:flex;align-items:center;gap:12px;">
+<button class="lang-btn" id="langBtn" aria-label="Sprache wählen">
+<span id="lFlag"></span><span id="lCode">DE</span>
+<svg viewBox="0 0 10 6" fill="none" width="10" height="6"><path d="M1 1l4 4 4-4" stroke="#111" stroke-width="1.5"/></svg>
+<div class="lang-dropdown">
+<div class="lang-opt active" data-lang="de" onclick="setNivellLang('de',window.T);updateLangUI('de',this)"><img src="https://flagcdn.com/20x15/de.png" alt="DE"> Deutsch</div>
+<div class="lang-opt" data-lang="en" onclick="setNivellLang('en',window.T);updateLangUI('en',this)"><img src="https://flagcdn.com/20x15/gb.png" alt="EN"> English</div>
+</div>
+</button>
+<a class="btn-3d" href="https://nivellonlign.com/" style="font-size:13px;padding:12px 22px;" target="_blank" data-i18n="n_portal">Doctor Portal →</a>
+<button class="n-hamburger" id="hamburger" aria-label="Navigation öffnen" aria-expanded="false" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</div>
+</div>
+<div class="n-mobile-menu" id="mobileMenu">
+<ul>
+<li><span class="n-mob-section" data-i18n="n_prod">Produkte</span></li>
+<li class="n-mob-sub"><a href="../aligner/" data-i18n="n_align">Schienen</a></li>
+<li class="n-mob-sub"><a href="../brackets/" data-i18n="n_brack">Brackets</a></li>
+<li class="n-mob-sub"><a href="../whitening/" data-i18n="n_white">Whitening</a></li>
+<li><a href="../visibal/" style="color:var(--red);font-weight:700;">VISIBAL</a></li>
+<li><a href="../#about" data-i18n="n_about">Über uns</a></li>
+<li><a href="../#contact-form" data-i18n="n_con">Kontakt</a></li>
+<li><a href="https://shop.nivellipso.com/" data-i18n="n_shop">Webshop</a></li>
+</ul>
+<a href="https://nivellonlign.com/" target="_blank" class="n-mobile-cta" data-i18n="n_portal">Doctor Portal →</a>
+</div>
+</nav>
+<!-- HERO -->
+<div class="vis-hero">
+<div class="vis-hero-inner">
+<!-- LEFT: Text -->
+<div>
+<div style="display:inline-flex;align-items:center;gap:8px;background:rgba(192,0,0,.15);border:1px solid rgba(192,0,0,.3);padding:6px 14px;margin-bottom:22px;">
+<div style="width:6px;height:6px;background:var(--red);border-radius:50%;animation:pulse-ring 2s ease-out infinite;"></div>
+<span data-i18n="vb_e14" style="font-size:14px;letter-spacing:2.5px;color:rgba(255,255,255,.7);text-transform:uppercase;font-weight:700;">nivellipso® Innovation 2026</span>
+</div>
+<div class="t-label" data-i18n="vb_e3" style="color:var(--red);">VISIBAL</div>
+<h1 data-i18n="vb_1" style="font-size:clamp(28px,4.5vw,58px);font-weight:700;color:white;letter-spacing:-1.5px;line-height:1.06;margin-bottom:18px;">30% aller Patienten<br/>brechen ab.<br/><em style="font-style:normal;color:var(--red);">VISIBAL beendet das.</em></h1>
+<p data-i18n="vb_2" style="font-size:15px;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:32px;max-width:480px;">Die erste klinische Begleit-Plattform für Schienen-Patienten, Patient-App, Clinical Dashboard, monatliches Mailing und Podcast-Kanal. Powered by nivellipso®.</p>
+<div style="display:flex;gap:12px;flex-wrap:wrap;">
+<a class="btn-3d" data-i18n="cta_vb_demo" href="#demo">Demo anfragen →</a>
+<a class="btn-3d-ghost" data-i18n="cta_vb_more" href="#features">Mehr erfahren</a>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:36px;border-top:1px solid rgba(255,255,255,.08);padding-top:24px;">
+<div><div data-i18n="vb_e58" style="font-size:28px;font-weight:700;color:white;letter-spacing:-1.5px;">30<em style="font-style:normal;color:var(--red);">%</em></div><div data-i18n="vb_e59" style="font-size:9px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:1.5px;margin-top:3px;">Non-Compliance</div></div>
+<div><div data-i18n="vb_e60" style="font-size:28px;font-weight:700;color:white;letter-spacing:-1.5px;">78<em style="font-style:normal;color:var(--red);">%</em></div><div data-i18n="vb_e61" style="font-size:9px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:1.5px;margin-top:3px;">Besser mit App</div></div>
+<div><div data-i18n="vb_e62" style="font-size:28px;font-weight:700;color:white;letter-spacing:-1.5px;">CHF 89<em style="font-style:normal;color:var(--red);">/mo</em></div><div data-i18n="vb_e63" style="font-size:9px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:1.5px;margin-top:3px;">pro Patient / Monat</div></div>
+</div>
+</div>
+<!-- RIGHT: 3 Phone Screens -->
+<div>
+<div class="phones-showcase">
+<!-- LEFT PHONE: Treatment Progress -->
+<div class="phone-wrap left">
+<div class="phone-device">
+<div class="phone-notch"></div>
+<div class="phone-screen">
+<div class="ps-hdr">
+<span class="ps-logo" data-i18n="vb_e135">VISIBAL</span>
+<div class="ps-ico-sm">🦷</div>
+</div>
+<div class="ps-body">
+<div class="ps-grey" data-i18n="vb_e136">Guten Morgen</div>
+<div class="ps-name" data-i18n="vb_e137">Dr. Müller</div>
+<div class="db-hdr" style="margin-bottom:6px;">
+<div class="db-hdr-t" data-i18n="vb_e146">Praxis-Übersicht</div>
+<div class="db-hdr-s" data-i18n="vb_e147">18 aktive Patienten</div>
+</div>
+<div class="db-row"><div><div class="db-name" data-i18n="vb_e157">M. Schmidt</div><div class="db-meta" data-i18n="vb_e158">Stufe 9/14 · REGULAR</div></div><span class="db-badge bg-ok" data-i18n="vb_e148">✓ 22h</span></div>
+<div class="db-row"><div><div class="db-name" data-i18n="vb_e159">K. Weber</div><div class="db-meta" data-i18n="vb_e160">Stufe 4/8 · SOFT</div></div><span class="db-badge bg-warn" data-i18n="vb_e149">⚠ 18h</span></div>
+<div class="db-row"><div><div class="db-name" data-i18n="vb_e161">T. Brauer</div><div class="db-meta" data-i18n="vb_e162">Stufe 12/14 · INTENSE</div></div><span class="db-badge bg-alert" data-i18n="vb_e150">✗ 12h</span></div>
+<div class="db-summary">
+<div class="db-sstat"><div class="db-sn" data-i18n="vb_e163">14<em>✓</em></div><div class="db-sl" data-i18n="vb_e164">Compliant</div></div>
+<div class="db-sstat"><div class="db-sn" data-i18n="vb_e165">3<em style="color:#b87300">⚠</em></div><div class="db-sl" data-i18n="vb_e166">Achtung</div></div>
+<div class="db-sstat"><div class="db-sn" data-i18n="vb_e167">1<em style="color:var(--red)">!</em></div><div class="db-sl" data-i18n="vb_e168">Kritisch</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- CENTER PHONE: Patient Chat (featured) -->
+<div class="phone-wrap center">
+<div class="phone-device ctr">
+<div class="phone-notch"></div>
+<div class="phone-screen">
+<div class="ps-hdr">
+<span class="ps-logo" data-i18n="vb_e138">VISIBAL</span>
+<div class="ps-ico-sm">🦷</div>
+</div>
+<div class="ps-body">
+<div class="ps-grey" data-i18n="vb_e139">Schritt 8 von 14</div>
+<div class="ps-name" data-i18n="vb_e140">Marie, REGULAR Phase</div>
+<div class="ps-prog">
+<div class="ps-plabel" data-i18n="vb_e151">Behandlungsfortschritt</div>
+<div class="ps-ptitle" data-i18n="vb_e152">Three-Aligner · Dual Arch</div>
+<div class="ps-bar"><div class="ps-fill" style="width:57%;"></div></div>
+<div class="ps-pct"><span data-i18n="vb_e169">SOFT ✓</span><span style="color:var(--red);font-weight:700;">57%</span><span data-i18n="vb_e170">Fertig</span></div>
+<div class="ps-badge" data-i18n="vb_e153">REGULAR · Aktiv</div>
+</div>
+<div class="ps-plabel" data-i18n="vb_e141" style="margin-top:6px;">Online-Assistent</div>
+<div class="ps-chat-out" data-i18n="vb_e142">Die Schiene drückt bei Zahn 12, ist das normal?</div>
+<div class="ps-chat-in" data-i18n="vb_e143">Ja, völlig normal in der REGULAR-Phase. Der Druck zeigt aktive Zahnbewegung. In 2–3 Tagen besser. ✓</div>
+<div class="ps-ok" data-i18n="vb_e144">Heute: 21h 40min · Ziel fast erreicht 👍</div>
+</div>
+<div class="ps-tabs">
+<div class="ps-tab a" data-i18n="tab_verlauf"><div class="ps-tab-ico">📊</div>Verlauf</div>
+<div class="ps-tab" data-i18n="tab_chat"><div class="ps-tab-ico">💬</div>Chat</div>
+<div class="ps-tab" data-i18n="tab_fotos"><div class="ps-tab-ico">📷</div>Fotos</div>
+<div class="ps-tab" data-i18n="tab_praxis"><div class="ps-tab-ico">⚙️</div>Praxis</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT PHONE: Milestone -->
+<div class="phone-wrap right">
+<div class="phone-device">
+<div class="phone-notch"></div>
+<div class="phone-screen">
+<div class="ps-hdr">
+<span class="ps-logo" data-i18n="vb_e145">VISIBAL</span>
+<div class="ps-ico-sm">🏆</div>
+</div>
+<div class="ps-body">
+<div class="ms-center">
+<div class="ms-prog-wrap">
+<div class="ms-ring">
+<svg viewbox="0 0 60 60"><circle cx="30" cy="30" fill="none" r="24" stroke="#f0f0f0" stroke-width="5"></circle><circle cx="30" cy="30" fill="none" r="24" stroke="#C00000" stroke-dasharray="150.8" stroke-dashoffset="64.8" stroke-linecap="round" stroke-width="5"></circle></svg>
+<div class="ms-ring-txt">57%</div>
+</div>
+</div>
+<div class="ms-emoji">🎉</div>
+<div class="ms-title" data-i18n="vb_e154">Phase 1 abgeschlossen!</div>
+<div class="ms-sub" data-i18n="vb_e155">SOFT-Phase erfolgreich. Bereit für REGULAR. Ihre Zähne bewegen sich perfekt.</div>
+<div class="ms-stars"><span>⭐</span><span>⭐</span><span>⭐</span></div>
+</div>
+<div style="padding:0 8px 8px;">
+<div class="ps-plabel" data-i18n="vb_e156" style="margin-bottom:4px;">Nächste Schritte</div>
+<div style="background:var(--bg);border-radius:5px;padding:6px 8px;font-size:7px;color:var(--text);line-height:1.5;">
+<div data-i18n="vb_e171">✓ Retainer-Termin buchen</div>
+<div data-i18n="vb_e172">✓ Abschluss-Foto hochladen</div>
+<div data-i18n="vb_e173" style="color:var(--red);">→ INTENSE-Phase startet</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div data-i18n="vb_e4" style="text-align:center;margin-top:48px;font-size:14px;color:rgba(255,255,255,.25);letter-spacing:1px;text-transform:uppercase;">Clinical Dashboard · Patient App · Milestones</div>
+</div>
+</div>
+</div>
+<!-- FEATURES: PATIENT APP -->
+<section class="vis-sec" id="features">
+<div class="vis-inner">
+<div class="n-fade">
+<div class="t-label" data-i18n="vb_e5">VISIBAL Patient</div>
+<h2 class="t-h2" data-i18n="vb_3">Die App für Ihre Patienten.</h2>
+<div class="t-rule"></div>
+<p class="t-lead" data-i18n="vb_4">Kein Compliance-Problem mehr. Patienten werden durch jede Phase der Behandlung begleitet, mit Echtzeit-Feedback, Online-Assistent und Foto-Dokumentation.</p>
+</div>
+<div class="feat-grid n-fade">
+<div class="feat-card">
+<div class="ico-circle"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg></div>
+<div class="t-h3" data-i18n="vb_e15">Behandlungsfortschritt</div>
+<p data-i18n="vb_5" style="font-size:13px;color:var(--grey);line-height:1.7;">Live-Tracking jeder Alignerstufe. Patienten sehen ihre Progression visuell, das erhöht die Motivation und die Tragedisziplin.</p>
+</div>
+<div class="feat-card">
+<div class="ico-circle"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg></div>
+<div class="t-h3" data-i18n="vb_e16">Online-Assistent 24/7</div>
+<p data-i18n="vb_6" style="font-size:13px;color:var(--grey);line-height:1.7;">Fragen zu Druck, Passform, Pflege, der Online-Assistent antwortet sofort, in der Sprache des Patienten. Entlastet die Praxis enorm.</p>
+</div>
+<div class="feat-card">
+<div class="ico-circle"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+<div class="t-h3" data-i18n="vb_e17">22h-Tracking</div>
+<p data-i18n="vb_7" style="font-size:13px;color:var(--grey);line-height:1.7;">Patienten erfassen die Tragezeit selbst, VISIBAL erinnert und motiviert. Das Praxis-Dashboard sieht jeden Compliance-Abfall sofort.</p>
+</div>
+<div class="feat-card">
+<div class="ico-circle"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path></svg></div>
+<div class="t-h3" data-i18n="vb_e18">Foto-Dokumentation</div>
+<p data-i18n="vb_8" style="font-size:13px;color:var(--grey);line-height:1.7;">Standardisierte Fotos nach Anleitung, frontal, lateral, okklusal. Automatische Timeline. Ideal für Verlaufskontrollen und Vor-Nachher.</p>
+</div>
+<div class="feat-card">
+<div class="ico-circle"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></div>
+<div class="t-h3" data-i18n="vb_e19">Meilensteine</div>
+<p data-i18n="vb_9" style="font-size:13px;color:var(--grey);line-height:1.7;">Phasen-Abschlüsse werden gefeiert. „Phase 2 geschafft!", emotionale Bindung erhöht die Compliance für die nächste Phase signifikant.</p>
+</div>
+<div class="feat-card">
+<div class="ico-circle"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg></div>
+<div class="t-h3" data-i18n="vb_e20">6 Sprachen</div>
+<p data-i18n="vb_10" style="font-size:13px;color:var(--grey);line-height:1.7;">DE · FR · IT · EN · RU · ES. Jeder Patient erhält Informationen in seiner Muttersprache, lückenlose Kommunikation.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- MONTHLY MAILING -->
+<section class="vis-sec vis-sec-bg" id="mailing">
+<div class="vis-inner">
+<div class="n-fade">
+<div class="t-label" data-i18n="vb_e6">Patienten-Mailing</div>
+<h2 class="t-h2" data-i18n="vb_11">1× im Monat.<br/>Sanft. Klar. Wirksam.</h2>
+<div class="t-rule"></div>
+<p class="t-lead" data-i18n="vb_12" style="margin-bottom:36px;">Automatisch phasenbasiert, die richtige Botschaft zum richtigen Zeitpunkt. Nie aufdringlich, immer relevant. In der Muttersprache des Patienten.</p>
+</div>
+<div class="n-fade mail-split">
+<div>
+<div style="background:white;border-left:4px solid var(--red);padding:22px 28px;margin-bottom:20px;box-shadow:var(--shadow-sm);">
+<div data-i18n="vb_e64" style="font-size:14px;font-weight:700;letter-spacing:2px;color:var(--red);text-transform:uppercase;margin-bottom:8px;">Das Prinzip</div>
+<p data-i18n="vb_13" style="font-size:14px;color:var(--text);line-height:1.8;">Jeder Schienen-Patient bekommt 1× pro Monat eine E-Mail, abgestimmt auf seine aktuelle Behandlungsphase. Kein Massenversand. Keine generischen Templates. Klinisch kuratiert, automatisch versendet.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;">
+<div style="display:flex;gap:12px;align-items:flex-start;">
+<div class="ico-3d-sm"><svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="13"><path d="M5 13l4 4L19 7"></path></svg></div>
+<div><div data-i18n="vb_e119" style="font-size:13px;font-weight:700;color:var(--black);">Automatisch phasenbasiert</div><div data-i18n="vb_e120" style="font-size:12px;color:var(--grey);">SOFT / REGULAR / INTENSE → jeweils passende Inhalte</div></div>
+</div>
+<div style="display:flex;gap:12px;align-items:flex-start;">
+<div class="ico-3d-sm"><svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="13"><path d="M5 13l4 4L19 7"></path></svg></div>
+<div><div data-i18n="vb_e121" style="font-size:13px;font-weight:700;color:var(--black);">6 Sprachen</div><div data-i18n="vb_e122" style="font-size:12px;color:var(--grey);">DE · FR · IT · EN · RU · ES</div></div>
+</div>
+<div style="display:flex;gap:12px;align-items:flex-start;">
+<div class="ico-3d-sm"><svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="13"><path d="M5 13l4 4L19 7"></path></svg></div>
+<div><div data-i18n="vb_e123" style="font-size:13px;font-weight:700;color:var(--black);">DSGVO-konform</div><div data-i18n="vb_e124" style="font-size:12px;color:var(--grey);">Opt-in, jederzeit abbestellbar</div></div>
+</div>
+<div style="display:flex;gap:12px;align-items:flex-start;">
+<div class="ico-3d-sm"><svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="13"><path d="M5 13l4 4L19 7"></path></svg></div>
+<div><div data-i18n="vb_e125" style="font-size:13px;font-weight:700;color:var(--black);">Via VISIBAL oder E-Mail</div><div data-i18n="vb_e126" style="font-size:12px;color:var(--grey);">Push-Notification oder klassisches Mailing</div></div>
+</div>
+</div>
+</div>
+<div class="mailing-timeline">
+<div class="ml-item"><div class="ml-num">01</div><div class="ml-content"><div class="ml-tag" data-i18n="vb_e86">SOFT Phase</div><div class="ml-topic" data-i18n="vb_e87">Willkommen &amp; Start</div><div class="ml-desc" data-i18n="vb_e88">Behandlungsüberblick, SOFT-Phase erklärt, VISIBAL-App einrichten. „Ihr Lächeln hat begonnen."</div></div></div>
+<div class="ml-item"><div class="ml-num">02</div><div class="ml-content"><div class="ml-tag" data-i18n="vb_e89">SOFT Phase</div><div class="ml-topic" data-i18n="vb_e90">22 Stunden, warum es zählt</div><div class="ml-desc" data-i18n="vb_e91">Sanfte Erinnerung mit Biomechanik-Erklärung. Jede Stunde ohne Schiene verzögert das Ergebnis.</div></div></div>
+<div class="ml-item"><div class="ml-num">03</div><div class="ml-content"><div class="ml-tag" data-i18n="vb_e92">SOFT Phase</div><div class="ml-topic" data-i18n="vb_e93">Erster Fortschritt sichtbar</div><div class="ml-desc" data-i18n="vb_e94">Foto-Vergleich Stufe 1 vs. jetzt. Motivation durch sichtbares Ergebnis.</div></div></div>
+<div class="ml-item"><div class="ml-num">04</div><div class="ml-content"><div class="ml-tag" data-i18n="vb_e95">REGULAR Phase</div><div class="ml-topic" data-i18n="vb_e96">Aktivphase beginnt</div><div class="ml-desc" data-i18n="vb_e97">„Jetzt arbeitet Ihre Schiene auf Hochtouren." Druckgefühl = Zeichen korrekter Bewegung.</div></div></div>
+<div class="ml-item"><div class="ml-num">05</div><div class="ml-content"><div class="ml-tag" data-i18n="vb_e98">Meilenstein</div><div class="ml-topic" data-i18n="vb_e99">Halbzeit 🎉</div><div class="ml-desc" data-i18n="vb_e100">„Sie sind genau auf Kurs." Vorher-Nachher-Erinnerung. Emotionaler Höhepunkt.</div></div></div>
+<div class="ml-item"><div class="ml-num">06–11</div><div class="ml-content"><div class="ml-tag" data-i18n="vb_e101">INTENSE · Alltag · Retention</div><div class="ml-topic" data-i18n="vb_e102">Tipps · INTENSE Phase · Retainer · Abschluss</div><div class="ml-desc" data-i18n="vb_e103">Reise, Pflege, letzte Meile, Foto, Retainer-Aufklärung. Abschluss mit persönlichem Dank.</div></div></div>
+</div>
+</div>
+</div>
+</section>
+<!-- PODCAST -->
+<section class="vis-sec vis-sec-dark" id="podcast">
+<div class="vis-inner">
+<div class="n-fade">
+<div class="t-label" data-i18n="vb_e7" style="color:var(--red);">VISIBAL Podcast</div>
+<h2 class="t-h2" data-i18n="vb_14" style="color:white;">Wissen für Patienten.<br/><em style="font-style:normal;color:var(--red);">Einfach erklärt.</em></h2>
+<div class="t-rule"></div>
+<p data-i18n="vb_15" style="font-size:15px;color:rgba(255,255,255,.5);line-height:1.8;max-width:600px;margin-bottom:36px;">Der VISIBAL Podcast erklärt Patienten verständlich, was in ihrer Behandlung passiert, ohne Fachkauderwelsch. Auf Spotify, Apple Podcasts und YouTube.</p>
+</div>
+<div class="n-fade pod-feature-grid">
+<div>
+<div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:24px;">
+<div data-i18n="vb_e65" style="font-size:14px;font-weight:700;letter-spacing:2px;color:var(--red);text-transform:uppercase;margin-bottom:6px;">Featured Episode</div>
+<div data-i18n="vb_e66" style="font-size:20px;font-weight:700;color:white;margin-bottom:8px;letter-spacing:-.3px;">Warum 22 Stunden?</div>
+<div data-i18n="vb_e67" style="font-size:13px;color:rgba(255,255,255,.45);line-height:1.6;margin-bottom:16px;">Was passiert, wenn man den Aligner zu wenig trägt, einfach erklärt, ohne Fachwörter.</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;">
+<a data-i18n="vb_e104" href="#" onmouseout="this.style.background='rgba(255,255,255,.08)'" onmouseover="this.style.background='rgba(255,255,255,.16)'" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);color:white;padding:7px 13px;font-size:11px;font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,.12);transition:all .2s;">🎵 Spotify</a>
+<a data-i18n="vb_e105" href="#" onmouseout="this.style.background='rgba(255,255,255,.08)'" onmouseover="this.style.background='rgba(255,255,255,.16)'" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);color:white;padding:7px 13px;font-size:11px;font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,.12);transition:all .2s;">🎙 Apple</a>
+<a data-i18n="vb_e106" href="#" onmouseout="this.style.background='rgba(255,255,255,.08)'" onmouseover="this.style.background='rgba(255,255,255,.16)'" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);color:white;padding:7px 13px;font-size:11px;font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,.12);transition:all .2s;">▶ YouTube</a>
+</div>
+</div>
+</div>
+<div class="pod-list">
+<div class="pod-ep" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1);">
+<div class="pod-num" style="color:rgba(192,0,0,.5);">05</div>
+<div class="pod-play"><svg fill="white" height="14" stroke="none" viewbox="0 0 24 24" width="14"><path d="M8 5v14l11-7z"></path></svg></div>
+<div class="pod-info"><div class="pod-title" data-i18n="vb_e107" style="color:white;">Die drei Phasen: SOFT, REGULAR, INTENSE erklärt</div><div class="pod-desc" data-i18n="vb_e108" style="color:rgba(255,255,255,.4);">Was bedeuten die verschiedenen Schienen-Materialien für meine Zähne?</div><div class="pod-meta" style="color:rgba(255,255,255,.25);"><span data-i18n="vb_e127">Apr 2026</span><span data-i18n="vb_e128">Patient-Info</span></div></div>
+<div class="pod-dur" data-i18n="vb_e68">31 Min.</div>
+</div>
+<div class="pod-ep" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1);">
+<div class="pod-num" style="color:rgba(192,0,0,.5);">04</div>
+<div class="pod-play"><svg fill="white" height="14" stroke="none" viewbox="0 0 24 24" width="14"><path d="M8 5v14l11-7z"></path></svg></div>
+<div class="pod-info"><div class="pod-title" data-i18n="vb_e109" style="color:white;">Schmerzen, Druck, Unbehagen, was ist normal?</div><div class="pod-desc" data-i18n="vb_e110" style="color:rgba(255,255,255,.4);">Wann muss ich mir Sorgen machen und wann ist alles in Ordnung?</div><div class="pod-meta" style="color:rgba(255,255,255,.25);"><span data-i18n="vb_e129">Mär 2026</span><span data-i18n="vb_e130">Patient-Info</span></div></div>
+<div class="pod-dur" data-i18n="vb_e69">24 Min.</div>
+</div>
+<div class="pod-ep" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1);">
+<div class="pod-num" style="color:rgba(192,0,0,.5);">03</div>
+<div class="pod-play"><svg fill="white" height="14" stroke="none" viewbox="0 0 24 24" width="14"><path d="M8 5v14l11-7z"></path></svg></div>
+<div class="pod-info"><div class="pod-title" data-i18n="vb_e111" style="color:white;">Essen, Trinken, Zähneputzen mit Schiene</div><div class="pod-desc" data-i18n="vb_e112" style="color:rgba(255,255,255,.4);">Die wichtigsten Alltagsfragen beantwortet, einfach und klar.</div><div class="pod-meta" style="color:rgba(255,255,255,.25);"><span data-i18n="vb_e131">Feb 2026</span><span data-i18n="vb_e132">Alltag</span></div></div>
+<div class="pod-dur" data-i18n="vb_e70">18 Min.</div>
+</div>
+<div class="pod-ep" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1);">
+<div class="pod-num" style="color:rgba(192,0,0,.5);">02</div>
+<div class="pod-play"><svg fill="white" height="14" stroke="none" viewbox="0 0 24 24" width="14"><path d="M8 5v14l11-7z"></path></svg></div>
+<div class="pod-info"><div class="pod-title" data-i18n="vb_e113" style="color:white;">Retainer: Warum es nach der Behandlung weitergeht</div><div class="pod-desc" data-i18n="vb_e114" style="color:rgba(255,255,255,.4);">Kein Retainer = Rezidiv. Was Patienten wissen müssen.</div><div class="pod-meta" style="color:rgba(255,255,255,.25);"><span data-i18n="vb_e133">Jan 2026</span><span data-i18n="vb_e134">Retention</span></div></div>
+<div class="pod-dur" data-i18n="vb_e71">22 Min.</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- PATIENT INFO FAQ -->
+<section class="vis-sec" id="patient-info">
+<div class="vis-inner">
+<div class="n-fade">
+<div class="t-label" data-i18n="vb_e8">Patient-Info</div>
+<h2 class="t-h2" data-i18n="vb_16">Fragen, die Patienten<br/>wirklich stellen.</h2>
+<div class="t-rule"></div>
+<p class="t-lead" data-i18n="vb_17" style="margin-bottom:32px;">VISIBAL beantwortet die häufigsten Patientenfragen automatisch, 24/7, in der richtigen Sprache. Das entlastet Ihre Praxis täglich.</p>
+</div>
+<div class="info-grid n-fade">
+<div class="info-card"><div class="info-q" data-i18n="vb_e21">„Wie lange muss ich den Aligner täglich tragen?"</div><div class="info-a" data-i18n="vb_e22">Mindestens 22 Stunden pro Tag, das ist keine Empfehlung, sondern medizinische Notwendigkeit. Unter 20h verliert der Aligner biomechanische Wirksamkeit. VISIBAL erinnert Sie täglich.</div></div>
+<div class="info-card"><div class="info-q" data-i18n="vb_e23">„Der Aligner drückt stark, ist das normal?"</div><div class="info-a" data-i18n="vb_e24">Druckgefühl in den ersten 2–3 Tagen nach Stufenwechsel ist normal und gewünscht, er zeigt aktive Zahnbewegung. Starke Schmerzen oder Schleimhautverletzungen bitte sofort melden.</div></div>
+<div class="info-card"><div class="info-q" data-i18n="vb_e25">„Kann ich mit dem Aligner essen und trinken?"</div><div class="info-a" data-i18n="vb_e26">Bitte vor dem Essen immer abnehmen. Trinken: Wasser mit Aligner ist OK. Alles andere, Kaffee, Säfte, Alkohol, kann den Aligner verfärben und verformen. Immer Zähne putzen vor dem Einsetzen.</div></div>
+<div class="info-card"><div class="info-q" data-i18n="vb_e27">„Was passiert, wenn ich eine Stufe vergesse?"</div><div class="info-a" data-i18n="vb_e28">Nicht in Panik. Aktuelle Stufe weiter tragen und beim nächsten Termin berichten. Nie zur nächsten Stufe wechseln, wenn die aktuelle nicht perfekt sitzt, Ihre Praxis entscheidet den Wechsel.</div></div>
+<div class="info-card"><div class="info-q" data-i18n="vb_e29">„Was ist der Unterschied zwischen SOFT, REGULAR und INTENSE?"</div><div class="info-a" data-i18n="vb_e30">Drei verschiedene Materialien für drei Behandlungsphasen: SOFT startet sanft, REGULAR bewegt aktiv, INTENSE stabilisiert final. Jede Phase hat eine klinische Funktion, das Three-Schienen-System ist biomechanisch überlegen.</div></div>
+<div class="info-card"><div class="info-q" data-i18n="vb_e31">„Brauche ich nach der Behandlung wirklich einen Retainer?"</div><div class="info-a" data-i18n="vb_e32">Ja, immer. Zähne haben ein natürliches Rezidiv-Potential. Ohne Retainer können sich die Zähne zurückbewegen. Ihre Praxis erklärt Ihnen das richtige Retainer-Regime für Ihr Ergebnis.</div></div>
+</div>
+</div>
+</section>
+<!-- CLINICAL DASHBOARD -->
+<section class="vis-sec vis-sec-bg">
+<div class="vis-inner">
+<div class="n-fade">
+<div class="t-label" data-i18n="vb_e9">VISIBAL Clinic</div>
+<h2 class="t-h2" data-i18n="vb_18">Das Dashboard für Ihre Praxis.</h2>
+<div class="t-rule"></div>
+<p class="t-lead" data-i18n="vb_19" style="margin-bottom:36px;">Sehen Sie auf einen Blick, welche Patienten compliant sind und welche Ihre Aufmerksamkeit brauchen, bevor es ein Problem wird.</p>
+</div>
+<div class="n-fade" style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:36px;">
+<div onmouseout="this.style.transform='';this.style.boxShadow=''" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow)'" style="background:white;border-top:3px solid #2d8a4e;padding:22px;text-align:center;transition:transform .2s,box-shadow .2s;"><div style="font-size:36px;font-weight:700;color:#2d8a4e;letter-spacing:-2px;">78%</div><div data-i18n="vb_e33" style="font-size:12px;color:var(--grey);margin-top:4px;">Ø Compliance-Rate</div></div>
+<div onmouseout="this.style.transform='';this.style.boxShadow=''" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow)'" style="background:white;border-top:3px solid var(--red);padding:22px;text-align:center;transition:transform .2s,box-shadow .2s;"><div style="font-size:36px;font-weight:700;color:var(--red);letter-spacing:-2px;">–30%</div><div data-i18n="vb_e34" style="font-size:12px;color:var(--grey);margin-top:4px;">Weniger Notfallanrufe</div></div>
+<div onmouseout="this.style.transform='';this.style.boxShadow=''" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow)'" style="background:white;border-top:3px solid #1a73e8;padding:22px;text-align:center;transition:transform .2s,box-shadow .2s;"><div style="font-size:36px;font-weight:700;color:#1a73e8;letter-spacing:-2px;">24/7</div><div data-i18n="vb_e35" style="font-size:12px;color:var(--grey);margin-top:4px;">Online-Assistent beantwortet Fragen</div></div>
+<div onmouseout="this.style.transform='';this.style.boxShadow=''" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow)'" style="background:white;border-top:3px solid #b87300;padding:22px;text-align:center;transition:transform .2s,box-shadow .2s;"><div data-i18n="vb_e36" style="font-size:36px;font-weight:700;color:#b87300;letter-spacing:-2px;">3 WT</div><div data-i18n="vb_e37" style="font-size:12px;color:var(--grey);margin-top:4px;">Frühe Intervention</div></div>
+</div>
+</div>
+</section>
+<!-- BUSINESS MODEL -->
+<section class="vis-sec vis-sec-dark" id="demo">
+<div class="vis-inner">
+<div class="n-fade">
+<div class="t-label" data-i18n="vb_e10" style="color:var(--red);">Business Model</div>
+<h2 class="t-h2" data-i18n="vb_20" style="color:white;">Einfache Preisstruktur.</h2>
+<div class="t-rule"></div>
+</div>
+<div class="bm-grid n-fade">
+<div class="bm-card">
+<div class="bm-tier" data-i18n="vb_e38">Free</div>
+<div class="bm-plan" data-i18n="vb_e39">Basic</div>
+<div class="bm-price" data-i18n="vb_e40">CHF 0 <em>/Monat</em></div>
+<div class="bm-features">
+<div class="bm-feat" data-i18n="vb_e72">Bis 10 aktive Patienten</div>
+<div class="bm-feat" data-i18n="vb_e73">Behandlungs-Tracking</div>
+<div class="bm-feat" data-i18n="vb_e74">Online-Assistent (begrenzt)</div>
+<div class="bm-feat" data-i18n="vb_e75">Für alle nivellipso® Kunden</div>
+</div>
+</div>
+<div class="bm-card featured">
+<div class="bm-tier" data-i18n="vb_e41">Empfohlen</div>
+<div class="bm-plan" data-i18n="vb_e42">Pro</div>
+<div class="bm-price" data-i18n="vb_e43">CHF 89 <em>/Monat</em></div>
+<div class="bm-features">
+<div class="bm-feat" data-i18n="vb_e76">Unbegrenzte Patienten</div>
+<div class="bm-feat" data-i18n="vb_e77">Volles Clinical Dashboard</div>
+<div class="bm-feat" data-i18n="vb_e78">Online-Assistent unbegrenzt</div>
+<div class="bm-feat" data-i18n="vb_e79">Monatliches Patient-Mailing</div>
+<div class="bm-feat" data-i18n="vb_e80">Podcast-Integration</div>
+<div class="bm-feat" data-i18n="vb_e81">Praxis-KPIs &amp; Reports</div>
+</div>
+<div style="margin-top:20px;">
+<a class="btn-3d" data-i18n="n_con" href="index.html#contact-form" style="width:100%;text-align:center;display:block;">Demo anfragen</a>
+</div>
+</div>
+<div class="bm-card">
+<div class="bm-tier" data-i18n="vb_e44">Enterprise</div>
+<div class="bm-plan" data-i18n="vb_e45">White-Label</div>
+<div class="bm-price" data-i18n="vb_e46">Auf <em>Anfrage</em></div>
+<div class="bm-features">
+<div class="bm-feat" data-i18n="vb_e82">Eigenes Branding</div>
+<div class="bm-feat" data-i18n="vb_e83">API-Integration (OnyxCeph)</div>
+<div class="bm-feat" data-i18n="vb_e84">DSO &amp; Ketten</div>
+<div class="bm-feat" data-i18n="vb_e85">Dedicated Support</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ROADMAP -->
+<section class="vis-sec vis-sec-dark">
+<div class="vis-inner">
+<div class="n-fade">
+<div class="t-label" data-i18n="vb_e11" style="color:var(--red);">Roadmap</div>
+<h2 class="t-h2" data-i18n="vb_21" style="color:white;">Von der Vision zur Realität.</h2>
+<div class="t-rule"></div>
+</div>
+<div class="roadmap n-fade">
+<div class="rm-step done"><div class="rm-dot"></div><div class="rm-q" data-i18n="vb_e47">Q2 2026 · Now</div><div class="rm-title" data-i18n="vb_e48">MVP Launch</div><div class="rm-desc" data-i18n="vb_e49">Konzept, Design, Tech-Stack. Erste 5 Beta-Praxen. Core Features live.</div></div>
+<div class="rm-step"><div style="width:8px;height:8px;background:rgba(192,0,0,.3);border-radius:50%;margin-bottom:12px;border:2px solid var(--red);"></div><div class="rm-q" data-i18n="vb_e50">Q3 2026</div><div class="rm-title" data-i18n="vb_e51">Beta Roll-out</div><div class="rm-desc" data-i18n="vb_e52">20 Praxen, Patient-Mailing aktiv, Dashboard v2, Feedback-Loop.</div></div>
+<div class="rm-step"><div style="width:8px;height:8px;background:rgba(192,0,0,.2);border-radius:50%;margin-bottom:12px;border:1px solid rgba(192,0,0,.4);"></div><div class="rm-q" data-i18n="vb_e53">Q4 2026</div><div class="rm-title" data-i18n="vb_e54">Go-Live</div><div class="rm-desc" data-i18n="vb_e55">App Store Launch (iOS/Android). 50+ Praxen. Podcast Staffel 1.</div></div>
+<div class="rm-step"><div style="width:8px;height:8px;background:rgba(255,255,255,.08);border-radius:50%;margin-bottom:12px;border:1px solid rgba(255,255,255,.15);"></div><div class="rm-q">2027+</div><div class="rm-title" data-i18n="vb_e56">International</div><div class="rm-desc" data-i18n="vb_e57">OnyxCeph API, DACH Expansion, DSO-Partnerschaften.</div></div>
+</div>
+</div>
+</section>
+<!-- CHATBOT -->
+<button class="chat-toggle" id="chatToggle" onclick="toggleNivellChat()">
+<svg class="c-icon" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+<span class="c-label" data-i18n="cb_label_vb">Fragen zu VISIBAL?</span>
+<svg class="c-close" fill="none" stroke="currentColor" stroke-width="2" style="display:none;" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"></path></svg>
+</button>
+<div class="chat-window" id="chatWindow">
+<div class="chat-hdr"><div style="width:34px;height:34px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">📱</div><div style="margin-left:10px;"><div class="chat-hdr-name" data-i18n="vb_e12">VISIBAL Beratung</div><div class="chat-hdr-sub" data-i18n="vb_e13">App · Dashboard · Mailing · Podcast</div></div></div>
+<div class="chat-msgs" id="chatMessages"><div class="msg-bot" data-i18n="vb_e1">Hallo! Ich beantworte Ihre Fragen zu VISIBAL, Patient App, Clinical Dashboard, Preise und Demo-Anfragen.</div></div>
+<div class="chat-suggs" id="chatSugg">
+<button class="sugg" data-i18n="vb_24" onclick="sendNivellSugg(this)">Was kostet VISIBAL?</button>
+<button class="sugg" data-i18n="vb_25" onclick="sendNivellSugg(this)">Demo buchen</button>
+<button class="sugg" data-i18n="vb_26" onclick="sendNivellSugg(this)">Wie funktioniert das Mailing?</button>
+</div>
+<div class="chat-input-row">
+<input class="chat-input" id="chatInput" onkeypress="if(event.key==='Enter')sendNivellChat()" placeholder="Ihre Frage zu VISIBAL..."/>
+<button class="chat-send" onclick="sendNivellChat()"><svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg></button>
+</div>
+</div>
+<!-- FOOTER -->
+<footer class="n-footer">
+<div class="n-footer-inner">
+<div class="n-footer-grid">
+<div class="n-footer-brand">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+    <div style="width:28px;height:28px;background:var(--red);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 16 16" fill="none" width="14" height="14"><rect x="7" y="2" width="2" height="12" fill="white"/><rect x="2" y="7" width="12" height="2" fill="white"/></svg></div>
+    <span style="font-size:17px;font-weight:700;color:white;">nivellipso<span style="color:var(--red);">®</span></span>
+  </div>
+  <p style="font-size:13px;color:rgba(255,255,255,.72);line-height:1.6;max-width:260px;"><span data-i18n="h_badge">smiles made in Switzerland.</span> <span data-i18n="ft_since">Seit 2015.</span></p>
+  <div class="n-fsoc-row" style="display:flex;gap:10px;margin-top:14px;">
+    <a href="https://www.instagram.com/nivellipso" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="n-fsoc"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+    <a href="https://www.linkedin.com/company/nivellipso" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="n-fsoc"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+    <a href="https://wa.me/41794697176" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="n-fsoc"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+  </div>
+</div>
+<div class="n-footer-col">
+  <h4 data-i18n="ft_pr">Produkte</h4>
+  <ul>
+    <li><a href="../aligner/" data-i18n="ft_al">Clear Aligners</a></li>
+    <li><a href="../brackets/" data-i18n="ft_br">Brackets</a></li>
+    <li><a href="../whitening/" data-i18n="ft_wh">Whitening</a></li>
+    <li><a href="../visibal/" style="color:var(--red);font-weight:700;">VISIBAL</a></li>
+    <li><a href="https://shop.nivellipso.com/" data-i18n="n_shop">Webshop</a></li>
+  </ul>
+</div>
+<div class="n-footer-col">
+  <h4 data-i18n="ft_co">Unternehmen</h4>
+  <ul>
+    <li><a href="../#about" data-i18n="ft_ab">Über uns</a></li>
+    <li><a href="../#contacts" data-i18n="ft_te">Team</a></li>
+    <li><a href="../#faq" data-i18n="ft_fq">FAQ</a></li>
+    <li><a href="https://nivellonlign.com/" target="_blank" rel="noopener noreferrer" data-i18n="ft_po">Doctor Portal</a></li>
+  </ul>
+</div>
+<div class="n-footer-col">
+  <h4 data-i18n="ft_le">Rechtliches</h4>
+  <ul>
+    <li><a href="../agb/" data-i18n="ft_to">AGB</a></li>
+    <li><a href="../datenschutz/" data-i18n="ft_pp">Datenschutz</a></li>
+    <li><a href="../impressum/" data-i18n="ft_im">Impressum</a></li>
+  </ul>
+</div>
+</div>
+<div class="n-footer-bottom" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
+  <p>Copyright &copy; 2026 Nivellmedical AG &middot; Altgraben 31, CH-4624 H&auml;rkingen &middot; +41 79 469 71 76</p>
+  <p>Built &amp; maintained by <a href="https://technext.asia/" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,.5);text-decoration:none;font-weight:700;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'">TechNext</a></p>
+</div>
+</div>
+</footer>
+<script src="../assets/js/nivell-i18n.js?v=20260822"></script>
+<script src="../assets/js/nivell-site.js?v=20260822"></script>
+<script>
+function toggleMenu(){
+ document.getElementById('mobileMenu').classList.toggle('open');
+ document.getElementById('hamburger').classList.toggle('open');
+}
+document.addEventListener('DOMContentLoaded',()=>{
+ initScrollAnimations();
+ setActiveNav();
+  const _sl = localStorage.getItem('nivell_lang');
+  if (_sl && window.T) { setNivellLang(_sl, window.T); updateLangUI(_sl, document.querySelector('.lang-opt[data-lang="'+_sl+'"]')); }
+});
+// Scroll-hide nav with hysteresis
+(function(){
+  var nav = document.querySelector('.n-nav');
+  var lastY = 0;
+  if (!nav) return;
+  window.addEventListener('scroll', function(){
+    var y = window.pageYOffset;
+    if (y <= 0) { nav.classList.remove('hdr-hide'); lastY = 0; return; }
+    if (y < lastY - 8) { nav.classList.remove('hdr-hide'); }
+    else if (y > lastY + 5 && y > 80) { nav.classList.add('hdr-hide'); }
+    lastY = y;
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+﻿# Audio files (too large for git - host on CDN)
+assets/audio/
+*.m4a
+*.mp3
+*.mp4
+
+# System
+.DS_Store
+Thumbs.db
+.vercel

@@ -1,0 +1,498 @@
+﻿<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta name="robots" content="noindex, nofollow"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title data-i18n="page_title_aligner">Clear Schienen, nivellipso® Three-Schienen-System</title>
+<meta content="Klares Three-Schienen-System aus der Schweiz, SOFT, REGULAR, INTENSE. Vorhersehbare Biomechanik, Behandlungsplanung in 3 Werktagen." name="description"/>
+<meta content="Clear Schienen, nivellipso® Three-Schienen-System" property="og:title"/>
+<meta content="Klares Three-Schienen-System aus der Schweiz, SOFT, REGULAR, INTENSE. Vorhersehbare Biomechanik, Behandlungsplanung in 3 Werktagen." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://www.nivellipso.com/aligner/" property="og:url"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="../assets/css/nivell-design.css?v=20260822" rel="stylesheet"/>
+<style>
+.al-hero-bg{background:linear-gradient(145deg,#0a0000 0%,var(--black) 50%,#1a0000 100%);position:relative;overflow:hidden;}
+.al-hero-bg::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(192,0,0,.15) 0%,transparent 70%);pointer-events:none;}
+.al-hero-bg::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--red);}
+
+/* Phase Cards */
+.phase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:32px;}
+.phase-card{background:white;padding:28px 24px;border-top:3px solid var(--red);transition:transform .2s,box-shadow .2s;position:relative;}
+.phase-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.phase-num{font-size:48px;font-weight:700;color:var(--red);opacity:.12;letter-spacing:-3px;line-height:1;margin-bottom:14px;}
+.phase-tag{font-size:9px;font-weight:700;letter-spacing:2.5px;color:var(--red);text-transform:uppercase;margin-bottom:6px;}
+.phase-name{font-size:24px;font-weight:700;color:var(--black);margin-bottom:6px;letter-spacing:-.4px;}
+.phase-mat{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+.phase-desc{font-size:13px;color:var(--grey);line-height:1.7;margin-bottom:16px;}
+.phase-feats{display:flex;flex-direction:column;gap:7px;}
+.phase-feat{font-size:12px;color:var(--text);display:flex;gap:8px;align-items:flex-start;}
+.phase-feat::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;}
+
+/* Pricing Tabs */
+.price-tabs{display:flex;gap:2px;margin-bottom:0;border-bottom:2px solid var(--bg);}
+.price-tab{padding:14px 24px;font-size:13px;font-weight:700;background:none;border:none;cursor:pointer;color:var(--grey);font-family:Arial,sans-serif;transition:all .15s;position:relative;}
+.price-tab.active{color:var(--red);}
+.price-tab.active::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:3px;background:var(--red);}
+.price-tab:hover:not(.active){color:var(--text);}
+.price-panel{display:none;padding-top:24px;}
+.price-panel.active{display:block;}
+.price-table{width:100%;border-collapse:collapse;}
+.price-table th{background:var(--red);color:white;padding:13px 20px;text-align:left;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;}
+.price-table th:last-child{text-align:right;}
+.price-table td{padding:14px 20px;border-bottom:1px solid var(--border);font-size:14px;}
+.price-table td:last-child{text-align:right;font-weight:700;color:var(--black);}
+.price-table tr:nth-child(even) td{background:var(--bg);}
+.price-incl{background:var(--red-light);border-left:4px solid var(--red);padding:18px 24px;margin-top:16px;font-size:13px;color:var(--text);line-height:1.7;}
+
+/* Workflow */
+.wf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:36px;}
+.wf-step{background:white;padding:24px 20px;border-top:3px solid transparent;transition:border-color .2s,transform .2s;}
+.wf-step:hover{border-top-color:var(--red);transform:translateY(-3px);}
+.wf-n{font-size:36px;font-weight:700;color:var(--red);opacity:.14;line-height:1;margin-bottom:10px;letter-spacing:-2px;}
+.wf-t{font-size:15px;font-weight:700;color:var(--black);margin-bottom:6px;}
+.wf-d{font-size:13px;color:var(--grey);line-height:1.6;}
+
+/* Service grid */
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:24px;}
+.svc-row{background:white;border:1px solid var(--border);padding:16px 22px;display:flex;align-items:center;justify-content:space-between;transition:border-color .2s;}
+.svc-row:hover{border-color:var(--red);}
+.svc-name{font-size:14px;color:var(--text);}
+.svc-price{font-size:14px;font-weight:700;color:var(--red);}
+
+/* Loyalty */
+.loyal-table{width:100%;border-collapse:collapse;font-size:14px;margin-top:24px;}
+.loyal-table th{background:var(--red);color:white;padding:13px 20px;text-align:left;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;}
+.loyal-table td{padding:13px 20px;border-bottom:1px solid var(--border);}
+.loyal-table tr:nth-child(even) td{background:var(--bg);}
+.tier-pill{display:inline-block;padding:4px 12px;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;}
+.t0{background:#f0f0f0;color:#888;}.t1{background:#fff0e8;color:#b05a00;}.t2{background:#f0f0f0;color:#555;}.t3{background:#fffbe8;color:#9a6f00;}.t4{background:#f0f0ff;color:#6a00c8;}
+
+@media(max-width:768px){
+ .phase-grid{grid-template-columns:1fr;gap:10px;}
+ .wf-grid{grid-template-columns:1fr 1fr;gap:8px;}
+ .svc-grid{grid-template-columns:1fr;}
+ .price-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+ .price-table{font-size:13px;}
+ .price-table th,.price-table td{padding:10px 12px;}
+}
+@media(max-width:540px){
+ .wf-grid{grid-template-columns:1fr;}
+}
+
+/* ══ MOBILE (640px) ═══════════════════════════════════════════════════ */
+@media(max-width:640px){
+  .n-rec-banner{flex-direction:column;gap:8px;padding:18px 20px;}
+  .phase-content{padding:16px 18px;}
+  .phase-name{font-size:16px;}
+}
+
+/* ── CHAT BUTTON MOBILE — consistent circle across all pages ── */
+@media(max-width:768px){
+  .chat-toggle{position:fixed;right:16px !important;bottom:16px !important;padding:0 !important;width:54px !important;height:54px !important;border-radius:50% !important;justify-content:center !important;gap:0 !important;font-size:0 !important;box-shadow:0 4px 16px rgba(192,0,0,.45) !important;}
+  .chat-toggle .c-label,.chat-toggle .c-close{display:none !important;}
+  .chat-toggle .c-icon{width:24px !important;height:24px !important;display:block !important;}
+}
+</style>
+<style>.hero-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.38;z-index:0;pointer-events:none;}.n-page-hero{position:relative;}.n-page-hero-inner{position:relative;z-index:1;}.bracket-img{width:100%;height:150px;object-fit:contain;margin:12px 0 6px;display:block;}</style>
+<style>.al-headgrid{display:grid;grid-template-columns:1fr minmax(250px,400px);gap:40px;align-items:center;}.al-headgrid img{margin:0 !important;max-width:100% !important;}@media(max-width:860px){.al-headgrid{grid-template-columns:1fr;gap:18px;}}</style>
+</head>
+<body>
+<div id="mockup-ribbon" style="position:fixed;bottom:0;left:0;z-index:99999;background:#ff9800;color:#000;font:700 12px/1 monospace;padding:7px 16px;letter-spacing:1px;">MOCKUP &mdash; Review-Version, nicht live</div>
+<!-- NAV -->
+<nav class="n-nav" id="mainNav">
+<div class="n-nav-inner">
+<a class="n-logo" href="../">
+<img src="../assets/images/logo_black.png" alt="nivellipso®" style="height:46px;width:auto;display:block;">
+</a>
+<ul class="n-links">
+<li class="n-dropdown">
+<a class="n-dropdown-trigger" href="#"><span data-i18n="n_prod">Produkte</span> <svg class="n-drop-chevron" fill="none" viewBox="0 0 10 6" width="10" height="6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5"/></svg></a>
+<div class="n-dropdown-menu">
+<a href="../aligner/" data-i18n="n_align">Schienen</a>
+<a href="../brackets/" data-i18n="n_brack">Brackets</a>
+<a href="../whitening/" data-i18n="n_white">Whitening</a>
+</div>
+</li>
+<li><a href="../visibal/" style="color:var(--red);font-weight:700;">VISIBAL</a></li>
+<li><a href="../#about" data-i18n="n_about">Über uns</a></li>
+<li><a href="../#contact-form" data-i18n="n_con">Kontakt</a></li>
+<li><a href="https://shop.nivellipso.com/" data-i18n="n_shop">Webshop</a></li>
+</ul>
+<div style="display:flex;align-items:center;gap:12px;">
+<button class="lang-btn" id="langBtn" aria-label="Sprache wählen">
+<span id="lFlag"></span><span id="lCode">DE</span>
+<svg viewBox="0 0 10 6" fill="none" width="10" height="6"><path d="M1 1l4 4 4-4" stroke="#111" stroke-width="1.5"/></svg>
+<div class="lang-dropdown">
+<div class="lang-opt active" data-lang="de" onclick="setNivellLang('de',window.T);updateLangUI('de',this)"><img src="https://flagcdn.com/20x15/de.png" alt="DE"> Deutsch</div>
+<div class="lang-opt" data-lang="en" onclick="setNivellLang('en',window.T);updateLangUI('en',this)"><img src="https://flagcdn.com/20x15/gb.png" alt="EN"> English</div>
+</div>
+</button>
+<a class="btn-3d" href="https://nivellonlign.com/" style="font-size:13px;padding:12px 22px;" target="_blank" data-i18n="n_portal">Doctor Portal →</a>
+<button class="n-hamburger" id="hamburger" aria-label="Navigation öffnen" aria-expanded="false" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</div>
+</div>
+<div class="n-mobile-menu" id="mobileMenu">
+<ul>
+<li><span class="n-mob-section" data-i18n="n_prod">Produkte</span></li>
+<li class="n-mob-sub"><a href="../aligner/" data-i18n="n_align">Schienen</a></li>
+<li class="n-mob-sub"><a href="../brackets/" data-i18n="n_brack">Brackets</a></li>
+<li class="n-mob-sub"><a href="../whitening/" data-i18n="n_white">Whitening</a></li>
+<li><a href="../visibal/" style="color:var(--red);font-weight:700;">VISIBAL</a></li>
+<li><a href="../#about" data-i18n="n_about">Über uns</a></li>
+<li><a href="../#contact-form" data-i18n="n_con">Kontakt</a></li>
+<li><a href="https://shop.nivellipso.com/" data-i18n="n_shop">Webshop</a></li>
+</ul>
+<a href="https://nivellonlign.com/" target="_blank" class="n-mobile-cta" data-i18n="n_portal">Doctor Portal →</a>
+</div>
+</nav>
+<!-- HERO -->
+<div class="n-page-hero al-hero-bg">
+<video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" src="../assets/videos/dental_aligners_movement.mp4"></video>
+<div class="n-page-hero-inner">
+<div class="n-breadcrumb"><a data-i18n="n_home" href="../">Home</a> <svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.5"></path></svg> <span data-i18n="al_e4">Clear Schienen</span></div>
+<div class="t-label" data-i18n="al_e1" style="color:var(--red);">Clear Schienen</div>
+<h1 class="n-page-h1" data-i18n="al_1">Das nivellipso®<br/><em>Three-Schienen-System.</em></h1>
+<p class="n-page-sub" data-i18n="al_2">Drei differenzierte Materialien, entwickelt für jede Phase der Zahnbewegung. Vorhersehbar. Stabil. Kein Rezidiv. Swiss-Made in der Schweiz seit 2015.</p>
+<div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;">
+<a class="btn-3d" data-i18n="cta_al_preise" href="#pricing">Preise &amp; Optionen</a>
+<a class="btn-3d-ghost" data-i18n="n_portal" href="https://nivellonlign.com/" target="_blank">Doctor Portal →</a>
+</div>
+</div>
+</div>
+<!-- RECOMMENDATION BANNER -->
+<section class="n-sec" style="padding-top:48px;padding-bottom:24px;">
+<div class="n-sec-inner">
+<div class="n-rec-banner n-fade">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div><strong data-i18n="al_extra_klin">Unsere klinische Empfehlung</strong><p data-i18n="al_3">Aus biomechanischer Evidenz und 10 Jahren klinischer Erfahrung: Das Three-Schienen-System liefert überlegene Ergebnisse. Single-Schiene-Lösungen für einfache Fälle auf Anfrage verfügbar.</p></div>
+</div>
+</div>
+</section>
+<!-- THE 3 PHASES -->
+<section class="n-sec" style="padding-top:24px;">
+<div class="n-sec-inner">
+<div class="al-headgrid">
+<div class="n-fade">
+<div class="t-label" data-i18n="al_e5">Das System</div>
+<h2 class="t-h2" data-i18n="al_4">Drei Schienen pro Stufe.<br/>Eine Behandlung. Ein Ergebnis.</h2>
+<div class="t-rule"></div>
+<p class="t-lead" data-i18n="al_5">Jede Behandlungsstufe besteht aus drei Schienen mit unterschiedlichen Materialeigenschaften, Soft für die Initiation, Regular für die aktive Bewegung, Intense für die Stabilisierung.</p>
+</div>
+<img src="../assets/images/products/aligners-tray-box.png" alt="nivellipso Clear Aligners - Tray Box" loading="lazy" style="display:block;max-width:400px;width:100%;margin:6px auto 26px;"/>
+</div>
+<div class="phase-grid n-fade">
+<div class="phase-card">
+<div class="phase-num">01</div>
+<div class="phase-tag" data-i18n="al_e13">Phase 01</div>
+<div class="phase-name" data-i18n="al_e14">SOFT</div>
+<div class="phase-mat" data-i18n="al_e15">Initiation · Weiches Material</div>
+<div class="phase-desc" data-i18n="al_e16">Sanfte initiale Zahnbewegung. Das Gewebe passt sich an, der Patient gewöhnt sich an die Schiene. Maximaler Komfort beim Therapiebeginn.</div>
+<div class="phase-feats">
+<div class="phase-feat" data-i18n="al_e50">2 Tage pro Stufe</div>
+<div class="phase-feat" data-i18n="al_e51">Gewebeanpassung</div>
+<div class="phase-feat" data-i18n="al_e52">Hoher Tragekomfort</div>
+</div>
+</div>
+<div class="phase-card">
+<div class="phase-num">02</div>
+<div class="phase-tag" data-i18n="al_e17">Phase 02</div>
+<div class="phase-name" data-i18n="al_e18">REGULAR</div>
+<div class="phase-mat" data-i18n="al_e19">Bewegung · Mittleres Material</div>
+<div class="phase-desc" data-i18n="al_e20">Hauptbewegungsphase. Optimale Balance zwischen Kraft und Komfort. Hier passiert die eigentliche kieferorthopädische Korrektur.</div>
+<div class="phase-feats">
+<div class="phase-feat" data-i18n="al_e53">3 Tage pro Stufe</div>
+<div class="phase-feat" data-i18n="al_e54">Aktive Zahnbewegung</div>
+<div class="phase-feat" data-i18n="al_e55">Druckgefühl normal</div>
+</div>
+</div>
+<div class="phase-card">
+<div class="phase-num">03</div>
+<div class="phase-tag" data-i18n="al_e21">Phase 03</div>
+<div class="phase-name" data-i18n="al_e22">INTENSE</div>
+<div class="phase-mat" data-i18n="al_e23">Finalisierung · Festes Material</div>
+<div class="phase-desc" data-i18n="al_e24">Finale Stabilisierung und Retention der erreichten Position. Verhindert Rezidive durch konsequenten Gewebe-Settling-Prozess.</div>
+<div class="phase-feats">
+<div class="phase-feat" data-i18n="al_e56">2 Tage pro Stufe</div>
+<div class="phase-feat" data-i18n="al_e57">Finale Stabilisierung</div>
+<div class="phase-feat" data-i18n="al_e58">Kein Rezidiv</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- WHY -->
+<section class="n-sec n-sec-bg">
+<div class="n-sec-inner">
+<div class="n-fade">
+<div class="t-label" data-i18n="al_e6">Warum drei Schienen?</div>
+<h2 class="t-h2" data-i18n="al_6">Biomechanik, die funktioniert.</h2>
+<div class="t-rule"></div>
+</div>
+<div class="n-fade" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:36px;">
+<div class="card-3d card-3d-red">
+<div class="ico-circle" style="margin-bottom:16px;"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>
+<div class="t-h3" data-i18n="al_e25">Vorhersehbar</div>
+<p data-i18n="al_7" style="font-size:14px;color:var(--grey);line-height:1.7;">Drei Phasen statt einer pauschalen Schiene = präzise Steuerung der Bewegung. Klinische Ergebnisse entsprechen dem Treatment Plan.</p>
+</div>
+<div class="card-3d card-3d-red">
+<div class="ico-circle" style="margin-bottom:16px;"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+<div class="t-h3" data-i18n="al_e26">Komfortabel</div>
+<p data-i18n="al_8" style="font-size:14px;color:var(--grey);line-height:1.7;">SOFT-Phase reduziert Eingewöhnungsprobleme dramatisch. Höhere Patienten-Compliance vom Tag 1 an.</p>
+</div>
+<div class="card-3d card-3d-red">
+<div class="ico-circle" style="margin-bottom:16px;"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path></svg></div>
+<div class="t-h3" data-i18n="al_e27">Stabil</div>
+<p data-i18n="al_9" style="font-size:14px;color:var(--grey);line-height:1.7;">INTENSE-Phase finalisiert die Position. Gewebe-Settling vor Behandlungsende = keine späten Rezidive.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- PRICING -->
+<section class="n-sec" id="pricing">
+<div class="n-sec-inner">
+<div class="n-fade">
+<div class="t-label" data-i18n="cta_al_preise">Preise &amp; Optionen</div>
+<h2 class="t-h2" data-i18n="al_10">Preisliste, gültig ab 01.05.2026.</h2>
+<div class="t-rule"></div>
+<p class="t-lead" data-i18n="al_11" style="margin-bottom:32px;">Alle Preise in CHF, exkl. MWSt. 8.1%. Direkt ab Manufaktur. Frei Haus ab CHF 600.</p>
+</div>
+<div class="n-fade">
+<div class="price-tabs">
+<button class="price-tab active" data-i18n="al_12" onclick="showTab('single',this)">Single Arch</button>
+<button class="price-tab" data-i18n="al_13" onclick="showTab('dual',this)">Dual Arch</button>
+<button class="price-tab" data-i18n="al_14" onclick="showTab('touch',this)">Touch-Up</button>
+<button class="price-tab" data-i18n="al_15" onclick="showTab('retainer',this)">Retainer</button>
+</div>
+<!-- SINGLE ARCH -->
+<div class="price-panel active" id="tab-single">
+<table class="price-table">
+<thead><tr><th data-i18n="al_16">Anzahl Stufen</th><th data-i18n="al_17">Indikation</th><th data-i18n="al_18">Preis CHF</th></tr></thead>
+<tbody>
+<tr><td data-i18n="al_19">Bis 7 Stufen</td><td data-i18n="al_20">Leichte Korrekturen</td><td>710.—</td></tr>
+<tr><td data-i18n="al_21">8–14 Stufen</td><td data-i18n="al_22">Mittlere Komplexität</td><td>1'070.—</td></tr>
+<tr><td data-i18n="al_23">15–21 Stufen</td><td data-i18n="al_24">Komplexe Fälle</td><td>1'380.—</td></tr>
+<tr><td data-i18n="al_25">Unlimited (bis 36)</td><td data-i18n="al_26">Volle Behandlung</td><td>1'450.—</td></tr>
+</tbody>
+</table>
+<div class="price-incl"><strong data-i18n="al_extra_incl">Inklusive:</strong> Digitaler Treatment-Plan · ClinCheck-Review · Stufenvisualisierung · Freigabe-Workflow · 1 kostenlose Verfeinerung innerhalb 12 Monaten.</div>
+</div>
+<!-- DUAL ARCH -->
+<div class="price-panel" id="tab-dual">
+<table class="price-table">
+<thead><tr><th data-i18n="al_27">Anzahl Stufen</th><th data-i18n="al_28">Indikation</th><th data-i18n="al_29">Preis CHF</th></tr></thead>
+<tbody>
+<tr><td data-i18n="al_30">Bis 7 Stufen</td><td data-i18n="al_31">Beide Kiefer, leicht</td><td>1'100.—</td></tr>
+<tr><td data-i18n="al_32">8–14 Stufen</td><td data-i18n="al_33">Beide Kiefer, mittel</td><td>1'660.—</td></tr>
+<tr><td data-i18n="al_34">15–21 Stufen</td><td data-i18n="al_35">Beide Kiefer, komplex</td><td>2'100.—</td></tr>
+<tr><td data-i18n="al_36">Unlimited (bis 36)</td><td data-i18n="al_37">Volle Behandlung</td><td>2'200.—</td></tr>
+</tbody>
+</table>
+<div class="price-incl"><strong data-i18n="al_extra_incl">Inklusive:</strong> Digitaler Treatment-Plan · Vollständige Workflow-Unterstützung · 2 kostenlose Verfeinerungen innerhalb 18 Monaten.</div>
+</div>
+<!-- TOUCH-UP -->
+<div class="price-panel" id="tab-touch">
+<table class="price-table">
+<thead><tr><th data-i18n="al_38">Stufen</th><th data-i18n="al_39">Indikation</th><th data-i18n="al_40">Preis CHF</th></tr></thead>
+<tbody>
+<tr><td data-i18n="al_41">1–4 Stufen</td><td data-i18n="al_42">Kleine Korrekturen, Retainer-Rezidiv</td><td>470.—</td></tr>
+<tr><td data-i18n="al_43">5–7 Stufen</td><td data-i18n="al_44">Mittlere Nachbehandlung</td><td>650.—</td></tr>
+</tbody>
+</table>
+<div class="price-incl" data-i18n="al_e28">Für nachträgliche Korrekturen, Retainer-Rezidive oder finale Feinjustierungen.</div>
+</div>
+<!-- RETAINER -->
+<div class="price-panel" id="tab-retainer">
+<table class="price-table">
+<thead><tr><th data-i18n="al_45">Variante</th><th data-i18n="al_46">Anzahl</th><th data-i18n="al_47">Preis CHF</th></tr></thead>
+<tbody>
+<tr><td data-i18n="al_48">Single Arch Paar</td><td data-i18n="al_49">1 Paar</td><td>140.—</td></tr>
+<tr><td data-i18n="al_50">Dual Arch Paar</td><td data-i18n="al_51">1 Paar</td><td>230.—</td></tr>
+<tr><td data-i18n="al_52">Single Arch 3er-Set</td><td data-i18n="al_53">3 Stück</td><td>380.—</td></tr>
+<tr><td data-i18n="al_54">Dual Arch 3er-Set</td><td data-i18n="al_55">3 Stück</td><td>620.—</td></tr>
+</tbody>
+</table>
+<div class="price-incl"><strong data-i18n="al_extra_mat">Material:</strong> Biokompatibles PET-G, 1.0mm, klar, geruchsneutral. klinisch zertifiziert.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SERVICE FEES -->
+<section class="n-sec n-sec-bg">
+<div class="n-sec-inner">
+<div class="n-fade">
+<div class="t-label" data-i18n="al_e7">Service-Gebühren</div>
+<h2 class="t-h2" data-i18n="al_56">Zusatzleistungen.</h2>
+<div class="t-rule"></div>
+</div>
+<div class="svc-grid n-fade">
+<div class="svc-row"><span class="svc-name" data-i18n="al_e29">Modell-Scan</span><span class="svc-price" data-i18n="al_e30">CHF 35., / Kiefer</span></div>
+<div class="svc-row"><span class="svc-name" data-i18n="al_e31">Express-Lieferung (2–3 WT, CH/FL)</span><span class="svc-price" data-i18n="al_e32">CHF 45.—</span></div>
+<div class="svc-row"><span class="svc-name" data-i18n="al_e33">Refinement (ausserhalb Inklusivkontingent)</span><span class="svc-price" data-i18n="al_e34">CHF 190.—</span></div>
+<div class="svc-row"><span class="svc-name" data-i18n="al_e35">Plan-Revision (neue ClinCheck-Iteration ab Stufe 3)</span><span class="svc-price" data-i18n="al_e36">CHF 120.—</span></div>
+<div class="svc-row"><span class="svc-name" data-i18n="al_e37">Versand Standard (frei Haus ab CHF 600)</span><span class="svc-price" data-i18n="al_e38">CHF 18.—</span></div>
+<div class="svc-row"><span class="svc-name" data-i18n="al_e39">Versand International (EU/EWR)</span><span class="svc-price" data-i18n="al_e40">Auf Anfrage</span></div>
+</div>
+</div>
+</section>
+<!-- WORKFLOW -->
+<section class="n-sec">
+<div class="n-sec-inner">
+<div class="al-headgrid">
+<div class="n-fade">
+<div class="t-label" data-i18n="al_e8">Workflow</div>
+<h2 class="t-h2" data-i18n="al_57">Von der Bestellung zur Schiene.</h2>
+<div class="t-rule"></div>
+</div>
+<img src="../assets/images/products/doctors-portal.png" alt="nivellipso Doctor Portal" loading="lazy" style="display:block;max-width:720px;width:100%;margin:6px auto 30px;box-shadow:0 10px 34px rgba(0,0,0,.18);"/>
+</div>
+<div class="wf-grid n-fade">
+<div class="wf-step"><div class="wf-n">01</div><div class="wf-t" data-i18n="al_e41">Bestellen</div><div class="wf-d" data-i18n="al_e42">Doctor Portal oder info@nivellipso.com · STL/PLY Scans bevorzugt</div></div>
+<div class="wf-step"><div class="wf-n">02</div><div class="wf-t" data-i18n="al_e43">Plan in 3 WT</div><div class="wf-d" data-i18n="al_e44">Digitaler Treatment-Plan · ClinCheck-Review · Stufenvisualisierung</div></div>
+<div class="wf-step"><div class="wf-n">03</div><div class="wf-t" data-i18n="al_e45">Freigabe</div><div class="wf-d" data-i18n="al_e46">Sie reviewen und geben frei · Volle Kontrolle vor Produktion</div></div>
+<div class="wf-step"><div class="wf-n">04</div><div class="wf-t" data-i18n="al_e47">Lieferung</div><div class="wf-d" data-i18n="al_e48">Swiss-Made · Standard 14 Werktage</div></div>
+</div>
+</div>
+</section>
+<!-- LOYALTY -->
+<section class="n-sec n-sec-bg">
+<div class="n-sec-inner">
+<div class="n-fade">
+<div class="t-label" data-i18n="al_e9">Loyalty</div>
+<h2 class="t-h2" data-i18n="al_58">Loyalität zahlt sich aus.</h2>
+<div class="t-rule"></div>
+</div>
+<div class="n-fade" style="background:white;border:1px solid var(--border);border-radius:14px;padding:28px;margin-top:24px;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;">
+<div style="background:linear-gradient(135deg,var(--red),#8a0000);color:white;width:88px;height:88px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:28px;font-weight:700;letter-spacing:-1px;box-shadow:0 8px 24px rgba(192,0,0,.25);">−10%</div>
+<div>
+<div data-i18n="al_e49" style="font-size:14px;font-weight:700;letter-spacing:1.8px;color:var(--red);text-transform:uppercase;margin-bottom:5px;">Ab dem ersten Jahr</div>
+<h3 data-i18n="al_59" style="font-size:19px;font-weight:700;color:var(--black);letter-spacing:-.3px;margin-bottom:6px;">Automatischer 10% Rabatt.</h3>
+<p data-i18n="al_60" style="font-size:14px;color:var(--grey);line-height:1.7;">Ab einem Jahr als nivellipso®-Kunde erhalten Sie automatisch <strong>10% Rabatt</strong> auf jede Bestellung ab CHF 650. Weitere Aktionen via Newsletter, keine Werbeflut, nur echte Vorteile.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- WIN BACK -->
+<section class="n-sec">
+<div class="n-sec-inner">
+<div class="n-fade" style="background:linear-gradient(135deg,var(--red-light),white);border:1px solid #fdd;border-left:5px solid var(--red);padding:36px 40px;">
+<div class="t-label" data-i18n="al_e10">Win-Back Aktion Q2/Q3 2026</div>
+<h2 class="t-h2" data-i18n="al_61" style="margin-bottom:20px;">Für Praxen, die wir vermisst haben.</h2>
+<p data-i18n="al_62" style="font-size:15px;color:var(--text);line-height:1.75;margin-bottom:24px;max-width:680px;">Befristet für Praxen mit &gt;12 Monaten Inaktivität, wir möchten Sie zurück gewinnen.</p>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+<div style="display:flex;gap:12px;"><div class="ico-3d-sm"><svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="13"><path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path></svg></div><div><div data-i18n="al_e59" style="font-size:14px;font-weight:700;">Reconnect –15%</div><div data-i18n="al_e60" style="font-size:12px;color:var(--grey);">Erste Three-Schienen-Bestellung</div></div></div>
+<div style="display:flex;gap:12px;"><div class="ico-3d-sm"><svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="13"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><div><div data-i18n="al_e61" style="font-size:14px;font-weight:700;">Wieder-Einsteiger-Bonus</div><div data-i18n="al_e62" style="font-size:12px;color:var(--grey);">Ein besonderes Rabattsystem honoriert Ihre Rückkehr</div></div></div>
+<div style="display:flex;gap:12px;"><div class="ico-3d-sm"><svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="13"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg></div><div><div data-i18n="al_e63" style="font-size:14px;font-weight:700;">Persönliche Visite</div><div data-i18n="al_e64" style="font-size:12px;color:var(--grey);">Wir kommen zu Ihnen, gratis</div></div></div>
+</div>
+<a class="btn-3d" data-i18n="n_con" href="index.html#contact-form" style="margin-top:28px;">Win-Back anfragen →</a>
+</div>
+</div>
+</section>
+<!-- CHATBOT -->
+<button class="chat-toggle" id="chatToggle" onclick="toggleNivellChat()">
+<svg class="c-icon" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+<span class="c-label" data-i18n="cb_label_al">Schienen-Fragen?</span>
+<svg class="c-close" fill="none" stroke="currentColor" stroke-width="2" style="display:none;" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"></path></svg>
+</button>
+<div class="chat-window" id="chatWindow">
+<div class="chat-hdr"><div style="width:34px;height:34px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">🦷</div><div style="margin-left:10px;"><div class="chat-hdr-name" data-i18n="al_e11">Schienen-Beratung</div><div class="chat-hdr-sub" data-i18n="al_e12">Klinische Fragen · Preise · Workflow</div></div></div>
+<div class="chat-msgs" id="chatMessages"><div class="msg-bot" data-i18n="al_e2">Hallo! Ich beantworte Ihre Fragen zum Three-Schienen-System, Preisen, Lieferzeiten und Workflow.</div></div>
+<div class="chat-suggs" id="chatSugg">
+<button class="sugg" data-i18n="al_65" onclick="sendNivellSugg(this)">SOFT vs REGULAR?</button>
+<button class="sugg" data-i18n="al_66" onclick="sendNivellSugg(this)">Single Arch Preis?</button>
+<button class="sugg" data-i18n="al_67" onclick="sendNivellSugg(this)">Lieferzeit</button>
+</div>
+<div class="chat-input-row">
+<input class="chat-input" id="chatInput" onkeypress="if(event.key==='Enter')sendNivellChat()" placeholder="Ihre Frage..."/>
+<button class="chat-send" onclick="sendNivellChat()"><svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg></button>
+</div>
+</div>
+<!-- FOOTER -->
+<footer class="n-footer">
+<div class="n-footer-inner">
+<div class="n-footer-grid">
+<div class="n-footer-brand">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+    <div style="width:28px;height:28px;background:var(--red);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 16 16" fill="none" width="14" height="14"><rect x="7" y="2" width="2" height="12" fill="white"/><rect x="2" y="7" width="12" height="2" fill="white"/></svg></div>
+    <span style="font-size:17px;font-weight:700;color:white;">nivellipso<span style="color:var(--red);">®</span></span>
+  </div>
+  <p style="font-size:13px;color:rgba(255,255,255,.72);line-height:1.6;max-width:260px;"><span data-i18n="h_badge">smiles made in Switzerland.</span> <span data-i18n="ft_since">Seit 2015.</span></p>
+  <div class="n-fsoc-row" style="display:flex;gap:10px;margin-top:14px;">
+    <a href="https://www.instagram.com/nivellipso" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="n-fsoc"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+    <a href="https://www.linkedin.com/company/nivellipso" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="n-fsoc"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+    <a href="https://wa.me/41794697176" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="n-fsoc"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+  </div>
+</div>
+<div class="n-footer-col">
+  <h4 data-i18n="ft_pr">Produkte</h4>
+  <ul>
+    <li><a href="../aligner/" data-i18n="ft_al">Clear Aligners</a></li>
+    <li><a href="../brackets/" data-i18n="ft_br">Brackets</a></li>
+    <li><a href="../whitening/" data-i18n="ft_wh">Whitening</a></li>
+    <li><a href="../visibal/" style="color:var(--red);font-weight:700;">VISIBAL</a></li>
+    <li><a href="https://shop.nivellipso.com/" data-i18n="n_shop">Webshop</a></li>
+  </ul>
+</div>
+<div class="n-footer-col">
+  <h4 data-i18n="ft_co">Unternehmen</h4>
+  <ul>
+    <li><a href="../#about" data-i18n="ft_ab">Über uns</a></li>
+    <li><a href="../#contacts" data-i18n="ft_te">Team</a></li>
+    <li><a href="../#faq" data-i18n="ft_fq">FAQ</a></li>
+    <li><a href="https://nivellonlign.com/" target="_blank" rel="noopener noreferrer" data-i18n="ft_po">Doctor Portal</a></li>
+  </ul>
+</div>
+<div class="n-footer-col">
+  <h4 data-i18n="ft_le">Rechtliches</h4>
+  <ul>
+    <li><a href="../agb/" data-i18n="ft_to">AGB</a></li>
+    <li><a href="../datenschutz/" data-i18n="ft_pp">Datenschutz</a></li>
+    <li><a href="../impressum/" data-i18n="ft_im">Impressum</a></li>
+  </ul>
+</div>
+</div>
+<div class="n-footer-bottom" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
+  <p>Copyright &copy; 2026 Nivellmedical AG &middot; Altgraben 31, CH-4624 H&auml;rkingen &middot; +41 79 469 71 76</p>
+  <p>Built &amp; maintained by <a href="https://technext.asia/" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,.5);text-decoration:none;font-weight:700;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'">TechNext</a></p>
+</div>
+</div>
+</footer>
+<script src="../assets/js/nivell-i18n.js?v=20260822"></script>
+<script src="../assets/js/nivell-site.js?v=20260822"></script>
+<script>
+function showTab(tab,btn){
+ ['single','dual','touch','retainer'].forEach(t=>{
+ const el=document.getElementById('tab-'+t);
+ if(el)el.classList.toggle('active',t===tab);
+ });
+ document.querySelectorAll('.price-tab').forEach(b=>b.classList.remove('active'));
+ if(btn)btn.classList.add('active');
+}
+function toggleMenu(){
+ document.getElementById('mobileMenu').classList.toggle('open');
+ document.getElementById('hamburger').classList.toggle('open');
+}
+document.addEventListener('DOMContentLoaded',()=>{
+ initScrollAnimations();
+ setActiveNav();
+  const _sl = localStorage.getItem('nivell_lang');
+  if (_sl && window.T) { setNivellLang(_sl, window.T); updateLangUI(_sl, document.querySelector('.lang-opt[data-lang="'+_sl+'"]')); }
+});
+// Scroll-hide nav with hysteresis
+(function(){
+  var nav = document.querySelector('.n-nav');
+  var lastY = 0;
+  if (!nav) return;
+  window.addEventListener('scroll', function(){
+    var y = window.pageYOffset;
+    if (y <= 0) { nav.classList.remove('hdr-hide'); lastY = 0; return; }
+    if (y < lastY - 8) { nav.classList.remove('hdr-hide'); }
+    else if (y > lastY + 5 && y > 80) { nav.classList.add('hdr-hide'); }
+    lastY = y;
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>
